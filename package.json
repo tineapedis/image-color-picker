@@ -5,7 +5,10 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "lint": "ng lint"
+    "lint": "eslint --fix ."
+  },
+  "lint-staged": {
+    "*.{js,ts}": "eslint --fix ."
   },
   "private": true,
   "dependencies": {
