@@ -1,3 +1,13 @@
 <mat-toolbar id="app-header">
-    <span>This is Header.</span>
+    <button mat-icon-button>
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span>Image Color Picker</span>
+    <span id="spacer"></span>
+    <button mat-icon-button (click)="onClickThemeToggleButton()">
+        <mat-icon *ngIf="isLight; else showDarkModeIcon">light_mode</mat-icon>
+        <ng-template #showDarkModeIcon>
+            <mat-icon>dark_mode</mat-icon>
+        </ng-template>
+    </button>
 </mat-toolbar>

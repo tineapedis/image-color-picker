@@ -6,7 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  constructor() {}
+  isLight = true;
 
-  ngOnInit(): void {}
+  constructor() {}
+  ngOnInit() {}
+
+  onClickThemeToggleButton() {
+    this.isLight = !this.isLight;
+  }
 }
