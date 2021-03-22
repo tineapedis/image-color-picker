@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+@include mat-core();
+
+// ライトテーマ
+$image-color-picker-primary: mat-palette($mat-indigo);
+$image-color-picker-accent: mat-palette($mat-pink, A200, A100, A400);
+$image-color-picker-warn: mat-palette($mat-red);
+$image-color-picker-theme: mat-light-theme((
+  color: (
+    primary: $image-color-picker-primary,
+    accent: $image-color-picker-accent,
+    warn: $image-color-picker-warn,
+  )
+));
+@include angular-material-theme($image-color-picker-theme);
+
+// ダークテーマ
+$dark-primary: mat-palette($mat-blue-grey);
+$dark-accent: mat-palette($mat-amber, A200, A100, A400);
+$dark-warn: mat-palette($mat-deep-orange);
+$dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+.dark-theme {
+  @include angular-material-theme($dark-theme);
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

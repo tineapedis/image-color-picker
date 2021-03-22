@@ -1,13 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { CommonService } from './services/common.service';
+import { CommonService } from '../services/common.service';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss'],
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnInit, OnDestroy {
   isLight = true;
   private subscription!: Subscription;
 
@@ -23,5 +23,9 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  onClickThemeToggleButton() {
+    this.commonService.updateTheme();
   }
 }
