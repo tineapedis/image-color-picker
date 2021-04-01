@@ -13,6 +13,7 @@ export class ImageDisplayComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     const canvas = document.getElementById('image-canvas') as HTMLCanvasElement;
     const context = canvas.getContext('2d');
+
     if (context == null) {
       return;
     }
