@@ -6,13 +6,15 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
   styleUrls: ['./image-display.component.scss'],
 })
 export class ImageDisplayComponent implements OnInit, AfterViewInit {
+  private canvas?: HTMLCanvasElement;
+
   constructor() {}
 
   ngOnInit() {}
 
   ngAfterViewInit() {
-    const canvas = document.getElementById('image-canvas') as HTMLCanvasElement;
-    const context = canvas.getContext('2d');
+    this.canvas = document.getElementById('image-canvas') as HTMLCanvasElement;
+    const context = this.canvas.getContext('2d');
 
     if (context == null) {
       return;
@@ -52,6 +54,23 @@ export class ImageDisplayComponent implements OnInit, AfterViewInit {
         height
       );
     };
-    img.src = 'https://source.unsplash.com/random/600x600';
+    img.src = '/assets/images/techi.jpeg';
+
+    this.canvas.onclick = (evt: MouseEvent) => {
+      //  マウス座標の取得
+      const x = evt.offsetX;
+      const y = evt.offsetY;
+
+      //  指定座標のImageDataオブジェクトの取得
+      const imagedata = context.getImageData(x, y, 1, 1);
+
+      //  RGBAの取得
+      const r = imagedata.data[0];
+      const g = imagedata.data[1];
+      const b = imagedata.data[2];
+      const a = imagedata.data[3];
+
+      console.log(r);
+    };
   }
 }
