@@ -6,13 +6,15 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
   styleUrls: ['./image-display.component.scss'],
 })
 export class ImageDisplayComponent implements OnInit, AfterViewInit {
+  private canvas?: HTMLCanvasElement;
+
   constructor() {}
 
   ngOnInit() {}
 
   ngAfterViewInit() {
-    const canvas = document.getElementById('image-canvas') as HTMLCanvasElement;
-    const context = canvas.getContext('2d');
+    this.canvas = document.getElementById('image-canvas') as HTMLCanvasElement;
+    const context = this.canvas.getContext('2d');
 
     if (context == null) {
       return;
@@ -52,6 +54,31 @@ export class ImageDisplayComponent implements OnInit, AfterViewInit {
         height
       );
     };
-    img.src = 'https://source.unsplash.com/random/600x600';
+    img.src = '/assets/images/techi.jpeg';
+
+    this.canvas.onclick = (evt: MouseEvent) => {
+      const color = this.extractColor(context, evt);
+      const obj = document.getElementById('click');
+      if (obj != null) {
+        obj.innerText = `rgb(${color.red}, ${color.green}, ${color.blue})`;
+      }
+    };
+
+    this.canvas.onmousemove = (evt: MouseEvent) => {
+      const color = this.extractColor(context, evt);
+      const obj = document.getElementById('move');
+      if (obj != null) {
+        obj.innerText = `rgb(${color.red}, ${color.green}, ${color.blue})`;
+      }
+    };
+  }
+
+  extractColor(context: CanvasRenderingContext2D, evt: MouseEvent): Color {
+    const imagedata = context.getImageData(evt.offsetX, evt.offsetY, 1, 1);
+    return {
+      red: imagedata.data[0],
+      green: imagedata.data[1],
+      blue: imagedata.data[2],
+    };
   }
 }
