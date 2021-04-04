@@ -1,7 +1,11 @@
-<div fxLayout="row" fxLayoutAlign="center center">
-  <div fxFlex="95">
-    <p id="click">mouse click!</p>
-    <p id="move">moouse move!</p>
+<p id="click">mouse click!</p>
+<p id="move">moouse move!</p>
+
+<div fxLayout="row" fxLayoutAlign="space-evenly stretch">
+  <div fxFlex="80" class="container-component">
     <app-image-display [class.dark-theme]="!isLight"></app-image-display>
+  </div>
+  <div fxFlex="15" class="container-component">
+    <app-picked-color [class.dark-theme]="!isLight"></app-picked-color>
   </div>
 </div>

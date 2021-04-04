@@ -1,0 +1,25 @@
+#picked-color-card {
+
+}
+
+.title {
+  font-size: medium;
+  font-weight: bold;
+}
+
+.color-button {
+  margin-top: 5px;
+}
+
+#selected-color {
+  background-color: red;
+}
+
+.color-display {
+  height: 30px;
+  width: 70%;
+  margin-top: 5px;
+  background-color: red;
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, .5);
+  border-radius: 5px;
+}
