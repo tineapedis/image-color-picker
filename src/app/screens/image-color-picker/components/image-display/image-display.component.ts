@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { disableDebugTools } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-image-display',
@@ -57,20 +58,34 @@ export class ImageDisplayComponent implements OnInit, AfterViewInit {
     img.src = '/assets/images/techi.jpeg';
 
     this.canvas.onclick = (evt: MouseEvent) => {
-      //  マウス座標の取得
-      const x = evt.offsetX;
-      const y = evt.offsetY;
+      const color = this.extractColor(context, evt);
+      const obj = document.getElementById('click');
+      if (obj != null) {
+        obj.innerText = `rgb(${color.red}, ${color.green}, ${color.blue})`;
+      }
+    };
 
-      //  指定座標のImageDataオブジェクトの取得
-      const imagedata = context.getImageData(x, y, 1, 1);
+    this.canvas.onmousemove = (evt: MouseEvent) => {
+      const color = this.extractColor(context, evt);
+      const obj = document.getElementById('move');
+      if (obj != null) {
+        obj.innerText = `rgb(${color.red}, ${color.green}, ${color.blue})`;
+      }
+    };
+  }
 
-      //  RGBAの取得
-      const r = imagedata.data[0];
-      const g = imagedata.data[1];
-      const b = imagedata.data[2];
-      const a = imagedata.data[3];
-
-      console.log(r);
+  extractColor(context: CanvasRenderingContext2D, evt: MouseEvent): Color {
+    const imagedata = context.getImageData(evt.offsetX, evt.offsetY, 1, 1);
+    return {
+      red: imagedata.data[0],
+      green: imagedata.data[1],
+      blue: imagedata.data[2],
     };
   }
 }
+
+type Color = {
+  red: number;
+  green: number;
+  blue: number;
+};
