@@ -1,5 +1,4 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { disableDebugTools } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-image-display',
@@ -83,9 +82,3 @@ export class ImageDisplayComponent implements OnInit, AfterViewInit {
     };
   }
 }
-
-type Color = {
-  red: number;
-  green: number;
-  blue: number;
-};
