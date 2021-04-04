@@ -1,9 +1,6 @@
-<p id="click">mouse click!</p>
-<p id="move">moouse move!</p>
-
-<div fxLayout="row" fxLayoutAlign="space-evenly stretch">
+<div fxLayout="row" fxLayoutAlign="space-evenly stretch" id="container-component">
   <div fxFlex="80" class="container-component">
-    <app-image-display [class.dark-theme]="!isLight"></app-image-display>
+    <app-image-display [class.dark-theme]="!isLight" (eventSelectRGB)="onReceiveSelectedColorEvent($event)"></app-image-display>
   </div>
   <div fxFlex="15" class="container-component">
     <app-picked-color [class.dark-theme]="!isLight"></app-picked-color>

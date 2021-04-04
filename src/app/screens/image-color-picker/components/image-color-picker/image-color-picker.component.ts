@@ -9,6 +9,7 @@ import { CommonService } from '../../../../services/common.service';
 })
 export class ImageColorPickerComponent implements OnInit, OnDestroy {
   isLight = true;
+  public selectedRGB: RGB = { red: 0, green: 0, blue: 0 };
   private subscription!: Subscription;
 
   constructor(private commonService: CommonService) {}
@@ -23,5 +24,10 @@ export class ImageColorPickerComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  onReceiveSelectedColorEvent($eventSelectRGB: RGB) {
+    console.log('レシーブ！');
+    this.selectedRGB = $eventSelectRGB;
   }
 }
