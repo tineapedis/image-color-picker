@@ -9,7 +9,7 @@ import { CommonService } from '../../../../services/common.service';
 })
 export class ImageColorPickerComponent implements OnInit, OnDestroy {
   isLight = true;
-  public selectedRGB: RGB = { red: 0, green: 0, blue: 0 };
+  selectedRGB = '0 0 0';
   private subscription!: Subscription;
 
   constructor(private commonService: CommonService) {}
@@ -27,7 +27,7 @@ export class ImageColorPickerComponent implements OnInit, OnDestroy {
   }
 
   onReceiveSelectedColorEvent($eventSelectRGB: RGB) {
-    console.log('レシーブ！');
-    this.selectedRGB = $eventSelectRGB;
+    const rgb = $eventSelectRGB;
+    this.selectedRGB = `${rgb.red} ${rgb.green} ${rgb.blue}`;
   }
 }
