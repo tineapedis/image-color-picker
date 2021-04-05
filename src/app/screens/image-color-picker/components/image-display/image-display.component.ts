@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-image-display',
@@ -6,6 +7,8 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
   styleUrls: ['./image-display.component.scss'],
 })
 export class ImageDisplayComponent implements OnInit, AfterViewInit {
+  @Output() eventSelectRGB = new EventEmitter<RGB>();
+  @Output() eventPointerRGB = new EventEmitter<RGB>();
   private canvas?: HTMLCanvasElement;
 
   constructor() {}
@@ -58,22 +61,19 @@ export class ImageDisplayComponent implements OnInit, AfterViewInit {
 
     this.canvas.onclick = (evt: MouseEvent) => {
       const color = this.extractColor(context, evt);
-      const obj = document.getElementById('click');
-      if (obj != null) {
-        obj.innerText = `rgb(${color.red}, ${color.green}, ${color.blue})`;
-      }
+      this.eventSelectRGB.emit(color);
     };
 
     this.canvas.onmousemove = (evt: MouseEvent) => {
       const color = this.extractColor(context, evt);
-      const obj = document.getElementById('move');
-      if (obj != null) {
-        obj.innerText = `rgb(${color.red}, ${color.green}, ${color.blue})`;
-      }
+      this.eventPointerRGB.emit(color);
     };
   }
 
-  extractColor(context: CanvasRenderingContext2D, evt: MouseEvent): Color {
+  private extractColor(
+    context: CanvasRenderingContext2D,
+    evt: MouseEvent
+  ): RGB {
     const imagedata = context.getImageData(evt.offsetX, evt.offsetY, 1, 1);
     return {
       red: imagedata.data[0],
