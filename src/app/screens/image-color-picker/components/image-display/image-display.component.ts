@@ -8,6 +8,7 @@ import { Output, EventEmitter } from '@angular/core';
 })
 export class ImageDisplayComponent implements OnInit, AfterViewInit {
   @Output() eventSelectRGB = new EventEmitter<RGB>();
+  @Output() eventPointerRGB = new EventEmitter<RGB>();
   private canvas?: HTMLCanvasElement;
 
   constructor() {}
@@ -65,6 +66,7 @@ export class ImageDisplayComponent implements OnInit, AfterViewInit {
 
     this.canvas.onmousemove = (evt: MouseEvent) => {
       const color = this.extractColor(context, evt);
+      this.eventPointerRGB.emit(color);
     };
   }
 

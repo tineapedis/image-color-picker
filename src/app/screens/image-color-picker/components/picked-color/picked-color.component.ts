@@ -9,6 +9,8 @@ import { Input } from '@angular/core';
 export class PickedColorComponent implements OnInit {
   selectedRGB = '0 0 0';
   selectedHEX = '#FFFFFF';
+  pointerRGB = '0 0 0';
+  pointerHEX = '#FFFFFF';
 
   constructor() {}
 
@@ -22,6 +24,26 @@ export class PickedColorComponent implements OnInit {
       rgbArray[1],
       rgbArray[2]
     );
+    const selectedColorDisplay = document.getElementById(
+      'selected-color-display'
+    );
+    if (selectedColorDisplay) {
+      selectedColorDisplay.style.backgroundColor = this.selectedHEX;
+    }
+  }
+
+  @Input() set setPointerRGB(value: string) {
+    this.pointerRGB = value;
+    const rgbArray = value.split(' ');
+    this.pointerHEX = this.convertRgbToHex(
+      rgbArray[0],
+      rgbArray[1],
+      rgbArray[2]
+    );
+    const pickerColorDisplay = document.getElementById('picker-color-display');
+    if (pickerColorDisplay) {
+      pickerColorDisplay.style.backgroundColor = this.pointerHEX;
+    }
   }
 
   // TODO: 以下メソッド別ファイルに移植する
