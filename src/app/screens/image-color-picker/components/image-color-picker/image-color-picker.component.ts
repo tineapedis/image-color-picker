@@ -9,7 +9,7 @@ import { CommonService } from '../../../../services/common.service';
 })
 export class ImageColorPickerComponent implements OnInit, OnDestroy {
   isLight = true;
-  selectedRGB = '0 0 0';
+  selectedRGB = '255 255 255';
   private subscription!: Subscription;
 
   constructor(private commonService: CommonService) {}
