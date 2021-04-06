@@ -13,18 +13,54 @@ export class ImageDisplayComponent implements OnInit, AfterViewInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.canvas = document.getElementById('image-canvas') as HTMLCanvasElement;
+
+    window.onresize = () => {
+      this.drawImage();
+    };
+  }
 
   ngAfterViewInit() {
-    this.canvas = document.getElementById('image-canvas') as HTMLCanvasElement;
+    if (!this.canvas) {
+      return;
+    }
+
     const context = this.canvas.getContext('2d');
+    const containerPickerColor = document.getElementById(
+      'container-picker-color'
+    );
+
+    this.canvas.width = window.innerWidth * 0.8;
+    this.canvas.height =
+      containerPickerColor != null ? containerPickerColor.clientHeight : 0;
 
     if (context == null) {
       return;
     }
+
+    this.drawImage();
+
+    this.canvas.onclick = (evt: MouseEvent) => {
+      const color = this.extractColor(context, evt);
+      this.eventSelectRGB.emit(color);
+    };
+
+    this.canvas.onmousemove = (evt: MouseEvent) => {
+      const color = this.extractColor(context, evt);
+      this.eventPointerRGB.emit(color);
+    };
+  }
+
+  drawImage() {
+    const context = this.canvas?.getContext('2d');
     const img = new Image();
-    // 画像読み込み終了してから描画
+
     img.onload = () => {
+      if (!context) {
+        return;
+      }
+
       const canvasAspect = context.canvas.width / context.canvas.height; // canvasのアスペクト比
       const imgAspect = img.width / img.height; // 画像のアスペクト比
       let left = 0;
@@ -58,16 +94,6 @@ export class ImageDisplayComponent implements OnInit, AfterViewInit {
       );
     };
     img.src = '/assets/images/techi.jpeg';
-
-    this.canvas.onclick = (evt: MouseEvent) => {
-      const color = this.extractColor(context, evt);
-      this.eventSelectRGB.emit(color);
-    };
-
-    this.canvas.onmousemove = (evt: MouseEvent) => {
-      const color = this.extractColor(context, evt);
-      this.eventPointerRGB.emit(color);
-    };
   }
 
   private extractColor(

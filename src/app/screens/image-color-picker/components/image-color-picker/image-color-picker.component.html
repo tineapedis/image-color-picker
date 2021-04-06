@@ -1,11 +1,11 @@
 <div fxLayout="row" fxLayoutAlign="space-evenly stretch" id="container-component">
-  <div fxFlex="80" class="container-component">
+  <div fxFlex="80">
     <app-image-display [class.dark-theme]="!isLight" 
       (eventSelectRGB)="onReceiveSelectedColorEvent($event)"
       (eventPointerRGB)="onReceivePointerColorEvent($event)">
     </app-image-display>
   </div>
-  <div fxFlex="15" class="container-component">
+  <div fxFlex="15" id="container-picker-color">
     <app-picked-color 
       [class.dark-theme]="!isLight" 
       [setSelectedRGB]='selectedRGB'
