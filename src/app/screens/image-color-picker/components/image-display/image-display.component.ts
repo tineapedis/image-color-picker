@@ -10,54 +10,48 @@ export class ImageDisplayComponent implements OnInit, AfterViewInit {
   @Output() eventSelectRGB = new EventEmitter<RGB>();
   @Output() eventPointerRGB = new EventEmitter<RGB>();
   private canvas?: HTMLCanvasElement;
+  private windowWidth = 0;
+  private image = new Image();
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.canvas = document.getElementById('image-canvas') as HTMLCanvasElement;
+
+    window.onresize = () => {
+      if (!this.canvas || window.innerWidth === this.windowWidth) {
+        return;
+      }
+      this.canvas.width = window.innerWidth * 0.8;
+      this.windowWidth = window.innerWidth;
+      this.drawImage();
+    };
+
+    this.setUpMouseEvent();
+  }
 
   ngAfterViewInit() {
-    this.canvas = document.getElementById('image-canvas') as HTMLCanvasElement;
-    const context = this.canvas.getContext('2d');
-
-    if (context == null) {
+    if (!this.canvas) {
       return;
     }
-    const img = new Image();
-    // 画像読み込み終了してから描画
-    img.onload = () => {
-      const canvasAspect = context.canvas.width / context.canvas.height; // canvasのアスペクト比
-      const imgAspect = img.width / img.height; // 画像のアスペクト比
-      let left = 0;
-      let top = 0;
-      let width = 0;
-      let height = 0;
 
-      if (imgAspect >= canvasAspect) {
-        // 画像が横長
-        left = 0;
-        width = context.canvas.width;
-        height = context.canvas.width / imgAspect;
-        top = (context.canvas.height - height) / 2;
-      } else {
-        // 画像が縦長
-        top = 0;
-        height = context.canvas.height;
-        width = context.canvas.height * imgAspect;
-        left = (context.canvas.width - width) / 2;
-      }
-      context.drawImage(
-        img,
-        0,
-        0,
-        img.width,
-        img.height,
-        left,
-        top,
-        width,
-        height
-      );
-    };
-    img.src = '/assets/images/techi.jpeg';
+    const containerPickerColor = document.getElementById(
+      'container-picker-color'
+    );
+
+    this.canvas.width = window.innerWidth * 0.8;
+    this.windowWidth = window.innerWidth;
+    this.canvas.height =
+      containerPickerColor === null ? 0 : containerPickerColor.clientHeight;
+
+    this.drawImage();
+  }
+
+  private setUpMouseEvent() {
+    const context = this.canvas?.getContext('2d');
+    if (!this.canvas || !context) {
+      return;
+    }
 
     this.canvas.onclick = (evt: MouseEvent) => {
       const color = this.extractColor(context, evt);
@@ -70,11 +64,53 @@ export class ImageDisplayComponent implements OnInit, AfterViewInit {
     };
   }
 
+  private drawImage() {
+    const context = this.canvas?.getContext('2d');
+
+    this.image.onload = () => {
+      if (!context) {
+        return;
+      }
+
+      const canvas = context.canvas;
+      const canvasAspect = canvas.width / canvas.height;
+      const imageAspect = this.image.width / this.image.height;
+      let left = 0;
+      let top = 0;
+      let width = 0;
+      let height = 0;
+
+      if (imageAspect >= canvasAspect) {
+        // 画像横長
+        width = canvas.width;
+        height = canvas.width / imageAspect;
+        top = (canvas.height - height) / 2;
+      } else {
+        // 画像縦長
+        height = canvas.height;
+        width = canvas.height * imageAspect;
+        left = (canvas.width - width) / 2;
+      }
+      context.drawImage(
+        this.image,
+        0,
+        0,
+        this.image.width,
+        this.image.height,
+        left,
+        top,
+        width,
+        height
+      );
+    };
+    this.image.src = '/assets/images/techi.jpeg';
+  }
+
   private extractColor(
     context: CanvasRenderingContext2D,
-    evt: MouseEvent
+    event: MouseEvent
   ): RGB {
-    const imagedata = context.getImageData(evt.offsetX, evt.offsetY, 1, 1);
+    const imagedata = context.getImageData(event.offsetX, event.offsetY, 1, 1);
     return {
       red: imagedata.data[0],
       green: imagedata.data[1],
