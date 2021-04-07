@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Input } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-picked-color',
@@ -12,7 +13,7 @@ export class PickedColorComponent implements OnInit {
   pointerRGB = '0 0 0';
   pointerHEX = '#FFFFFF';
 
-  constructor() {}
+  constructor(private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {}
 
@@ -46,8 +47,7 @@ export class PickedColorComponent implements OnInit {
     }
   }
 
-  // TODO: 以下メソッド別ファイルに移植する
-
+  // TODO: 以下メソッド別ファイルに移植する -----------------------
   convertRgbToHex(red: string, green: string, blue: string) {
     return (
       '#' +
@@ -60,5 +60,20 @@ export class PickedColorComponent implements OnInit {
   toHex(color: number) {
     const hex = color.toString(16);
     return hex.length === 1 ? '0' + hex : hex;
+  }
+  // ---------------------------------------------------------
+
+  onClickRgbButton() {
+    this.showSnackBar(`RGB: ${this.selectedRGB}`);
+  }
+
+  onClickHexButton() {
+    this.showSnackBar(`HEX: ${this.selectedHEX}`);
+  }
+
+  private showSnackBar(text: string) {
+    this.snackBar.open('Copy！', text, {
+      duration: 2000,
+    });
   }
 }
