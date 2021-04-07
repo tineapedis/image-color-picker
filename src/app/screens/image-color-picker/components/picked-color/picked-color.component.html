@@ -9,9 +9,9 @@
 
   <mat-card-content fxLayout="column" fxLayoutAlign="center center">
     <p class="title">Current Point</p>
-    <button mat-stroked-button>RGB: {{ pointerRGB }}</button>
-    <button mat-stroked-button class="color-button">HEX: {{ pointerHEX }}</button>
-    <button mat-stroked-button class="color-button">CMYK: 0 0 0 0</button>
+    <button mat-stroked-button>{{ pointerRGB }}</button>
+    <button mat-stroked-button class="color-button">{{ pointerHEX }}</button>
+    <button mat-stroked-button class="color-button">0 0 0 0</button>
     <div class="color-display" id="picker-color-display"></div>
   </mat-card-content>
 </mat-card>
