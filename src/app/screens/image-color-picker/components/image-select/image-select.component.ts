@@ -8,5 +8,5 @@ import { Component, OnInit } from '@angular/core';
 export class ImageSelectComponent implements OnInit {
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit() {}
 }
