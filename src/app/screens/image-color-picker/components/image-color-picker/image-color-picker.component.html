@@ -1,5 +1,5 @@
-<div fxLayout="column">
-  <div fxLayout="row" fxLayoutAlign="space-evenly stretch" id="container-component">
+<div fxLayout="column" id="container-component">
+  <div fxLayout="row" fxLayoutAlign="space-evenly stretch">
     <div fxFlex="75">
       <app-image-display [class.dark-theme]="!isLight" (eventSelectRGB)="onReceiveSelectedColorEvent($event)"
         (eventPointerRGB)="onReceivePointerColorEvent($event)">
@@ -11,5 +11,7 @@
     </div>
   </div>
 
-  <mat-card></mat-card>
+  <div id="container-image-select" fxLayout="row" fxLayoutAlign="center">
+    <app-image-select fxFlex="97" [class.dark-theme]="!isLight"></app-image-select>
+  </div>
 </div>
