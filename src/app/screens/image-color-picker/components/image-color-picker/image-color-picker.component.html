@@ -1,15 +1,15 @@
-<div fxLayout="row" fxLayoutAlign="space-evenly stretch" id="container-component">
-  <div fxFlex="75">
-    <app-image-display [class.dark-theme]="!isLight" 
-      (eventSelectRGB)="onReceiveSelectedColorEvent($event)"
-      (eventPointerRGB)="onReceivePointerColorEvent($event)">
-    </app-image-display>
+<div fxLayout="column">
+  <div fxLayout="row" fxLayoutAlign="space-evenly stretch" id="container-component">
+    <div fxFlex="75">
+      <app-image-display [class.dark-theme]="!isLight" (eventSelectRGB)="onReceiveSelectedColorEvent($event)"
+        (eventPointerRGB)="onReceivePointerColorEvent($event)">
+      </app-image-display>
+    </div>
+    <div fxFlex="20" id="container-picker-color">
+      <app-picked-color [class.dark-theme]="!isLight" [setSelectedRGB]='selectedRGB' [setPointerRGB]='pointerRGB'>
+      </app-picked-color>
+    </div>
   </div>
-  <div fxFlex="20" id="container-picker-color">
-    <app-picked-color 
-      [class.dark-theme]="!isLight" 
-      [setSelectedRGB]='selectedRGB'
-      [setPointerRGB]='pointerRGB'>
-    </app-picked-color>
-  </div>
+
+  <mat-card></mat-card>
 </div>
