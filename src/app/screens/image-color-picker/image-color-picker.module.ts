@@ -7,6 +7,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ImageColorPickerComponent } from './components/image-color-picker/image-color-picker.component';
 import { ImageDisplayComponent } from './components/image-display/image-display.component';
 import { PickedColorComponent } from './components/picked-color/picked-color.component';
+import { ImageSelectComponent } from './components/image-select/image-select.component';
 
 const routes: Routes = [{ path: '', component: ImageColorPickerComponent }];
 
@@ -15,6 +16,7 @@ const routes: Routes = [{ path: '', component: ImageColorPickerComponent }];
     ImageColorPickerComponent,
     ImageDisplayComponent,
     PickedColorComponent,
+    ImageSelectComponent,
   ],
   imports: [
     RouterModule.forChild(routes),

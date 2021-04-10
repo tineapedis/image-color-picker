@@ -1,0 +1,26 @@
+<mat-card>
+  <mat-tab-group mat-align-tabs="center" animationDuration="0ms">
+    <mat-tab label="Upload Image"> 
+      <div class="tab-contents" fxLayoutAlign="center center">
+        <mat-card class="file-button" fxLayoutAlign="center center">
+          <mat-icon>image</mat-icon>
+          <p>Select or Drop Image</p>
+          <input class="file-input" type="file">
+        </mat-card>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Image URL"> 
+      <div fxLayout="column" fxLayoutAlign="space-around center" class="tab-contents">
+        <input placeholder="Input Image URL" id="input-image">
+        <button mat-stroked-button>OK</button>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Paste Clipboard"> 
+      <div class="tab-contents">
+        <p>3</p>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</mat-card>

@@ -1,0 +1,34 @@
+.tab-contents {
+  height: 120px;
+}
+
+.file-button {
+  height: 90%;
+  width: 90%;
+  border-radius: 4px;
+  background-color: #e2e6ec;
+  color: gray;
+}
+.file-button:hover {
+  background-color: #5a6985;
+  color: white;
+}
+.file-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+p {
+  margin: 0;
+}
+
+#input-image {
+  width: 60%;
+  height: 30px;
+  margin-top: 10px;
+}
