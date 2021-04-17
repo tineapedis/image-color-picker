@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-image-select',
@@ -7,7 +6,7 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./image-select.component.scss'],
 })
 export class ImageSelectComponent implements OnInit {
-  imageSrc: string | ArrayBuffer = '';
+  imageElement = document.createElement('image') as HTMLImageElement;
 
   constructor() {}
 
@@ -15,13 +14,14 @@ export class ImageSelectComponent implements OnInit {
 
   onChangeInputImage(event: any) {
     const reader = new FileReader();
-    const file = event.target.files[0];
     reader.onload = () => {
       if (!reader.result) {
         return;
       }
-      this.imageSrc = reader.result;
+      this.imageElement.src = reader.result as string;
+      const image = document.querySelector('#photo') as HTMLImageElement;
+      image.src = this.imageElement.src;
     };
-    reader.readAsDataURL(file);
+    reader.readAsDataURL(event.target.files[0]);
   }
 }
