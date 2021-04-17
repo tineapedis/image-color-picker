@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { MaterialModule } from '../../modules/material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule } from '@angular/forms';
 
 import { ImageColorPickerComponent } from './components/image-color-picker/image-color-picker.component';
 import { ImageDisplayComponent } from './components/image-display/image-display.component';
@@ -23,6 +24,7 @@ const routes: Routes = [{ path: '', component: ImageColorPickerComponent }];
     CommonModule,
     MaterialModule,
     FlexLayoutModule,
+    FormsModule,
   ],
 })
 export class ImageColorPickerModule {}
