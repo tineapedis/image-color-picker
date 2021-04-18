@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { ImageColorPickerService } from '../../../../services/image-color-picker.service';
 
 @Component({
   selector: 'app-image-select',
@@ -7,8 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ImageSelectComponent implements OnInit {
   imageElement = document.createElement('image') as HTMLImageElement;
+  private subscription!: Subscription;
 
-  constructor() {}
+  constructor(private imageColorPickerService: ImageColorPickerService) {}
 
   ngOnInit() {}
 
@@ -18,9 +21,7 @@ export class ImageSelectComponent implements OnInit {
       if (!reader.result) {
         return;
       }
-      this.imageElement.src = reader.result as string;
-      const image = document.querySelector('#photo') as HTMLImageElement;
-      image.src = this.imageElement.src;
+      this.imageColorPickerService.updateImageSrc(reader.result as string);
     };
     reader.readAsDataURL(event.target.files[0]);
   }

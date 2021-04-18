@@ -10,6 +10,8 @@ import { ImageDisplayComponent } from './components/image-display/image-display.
 import { PickedColorComponent } from './components/picked-color/picked-color.component';
 import { ImageSelectComponent } from './components/image-select/image-select.component';
 
+import { ImageColorPickerService } from '../../services/image-color-picker.service';
+
 const routes: Routes = [{ path: '', component: ImageColorPickerComponent }];
 
 @NgModule({
@@ -26,5 +28,6 @@ const routes: Routes = [{ path: '', component: ImageColorPickerComponent }];
     FlexLayoutModule,
     FormsModule,
   ],
+  providers: [ImageColorPickerService],
 })
 export class ImageColorPickerModule {}

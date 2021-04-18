@@ -5,8 +5,16 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class ImageColorPickerService {
-  imageObserver$;
-  private imageSubject = new BehaviorSubject<Image>();
+  imageSrcObserver$;
+  private imageSrcSubject = new BehaviorSubject<string>(
+    '/assets/images/techi.jpeg'
+  );
 
-  constructor() {}
+  constructor() {
+    this.imageSrcObserver$ = this.imageSrcSubject.asObservable();
+  }
+
+  updateImageSrc(imageSrc: string) {
+    this.imageSrcSubject.next(imageSrc);
+  }
 }
