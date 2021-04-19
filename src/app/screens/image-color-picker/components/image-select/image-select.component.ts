@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { ImageColorPickerService } from '../../../../services/image-color-picker.service';
 
 @Component({
@@ -8,9 +7,6 @@ import { ImageColorPickerService } from '../../../../services/image-color-picker
   styleUrls: ['./image-select.component.scss'],
 })
 export class ImageSelectComponent implements OnInit {
-  imageElement = document.createElement('image') as HTMLImageElement;
-  private subscription!: Subscription;
-
   constructor(private imageColorPickerService: ImageColorPickerService) {}
 
   ngOnInit() {}
