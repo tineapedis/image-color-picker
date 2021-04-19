@@ -5,7 +5,7 @@
         <mat-card class="file-button" fxLayoutAlign="center center">
           <mat-icon>image</mat-icon>
           <p>Select or Drop Image</p>
-          <input class="file-input" type="file">
+          <input class="file-input" type="file" accept="image/*" (change)="onChangeInputImage($event)">
         </mat-card>
       </div>
     </mat-tab>
