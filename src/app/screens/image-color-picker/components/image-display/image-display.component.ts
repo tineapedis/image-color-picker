@@ -1,19 +1,23 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { ImageColorPickerService } from '../../../../services/image-color-picker.service';
 
 @Component({
   selector: 'app-image-display',
   templateUrl: './image-display.component.html',
   styleUrls: ['./image-display.component.scss'],
 })
-export class ImageDisplayComponent implements OnInit, AfterViewInit {
+export class ImageDisplayComponent implements OnInit, OnDestroy, AfterViewInit {
   @Output() eventSelectRGB = new EventEmitter<RGB>();
   @Output() eventPointerRGB = new EventEmitter<RGB>();
   private canvas?: HTMLCanvasElement;
   private windowWidth = 0;
   private image = new Image();
+  private imageSrc = '';
+  private subscription!: Subscription;
 
-  constructor() {}
+  constructor(private imageColorPickerService: ImageColorPickerService) {}
 
   ngOnInit() {
     this.canvas = document.getElementById('image-canvas') as HTMLCanvasElement;
@@ -22,12 +26,25 @@ export class ImageDisplayComponent implements OnInit, AfterViewInit {
       if (!this.canvas || window.innerWidth === this.windowWidth) {
         return;
       }
+      this.image.src = this.imageSrc;
       this.canvas.width = window.innerWidth * 0.8;
       this.windowWidth = window.innerWidth;
       this.drawImage();
     };
 
     this.setUpMouseEvent();
+
+    this.subscription = this.imageColorPickerService.imageSrcObserver$.subscribe(
+      (imageSrc) => {
+        this.imageSrc = imageSrc;
+        this.image.src = imageSrc;
+        this.drawImage();
+      }
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   ngAfterViewInit() {
@@ -43,8 +60,6 @@ export class ImageDisplayComponent implements OnInit, AfterViewInit {
     this.windowWidth = window.innerWidth;
     this.canvas.height =
       containerPickerColor === null ? 0 : containerPickerColor.clientHeight;
-
-    this.drawImage();
   }
 
   private setUpMouseEvent() {
@@ -66,6 +81,7 @@ export class ImageDisplayComponent implements OnInit, AfterViewInit {
 
   private drawImage() {
     const context = this.canvas?.getContext('2d');
+    context?.clearRect(0, 0, this.canvas?.width ?? 0, this.canvas?.height ?? 0);
 
     this.image.onload = () => {
       if (!context) {
@@ -103,7 +119,6 @@ export class ImageDisplayComponent implements OnInit, AfterViewInit {
         height
       );
     };
-    this.image.src = '/assets/images/techi.jpeg';
   }
 
   private extractColor(
