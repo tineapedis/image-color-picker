@@ -3,11 +3,11 @@ import { CommonService } from '../services/common.service';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit, OnDestroy {
   isLight = true;
   private subscription!: Subscription;
 
@@ -23,9 +23,5 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
-  }
-
-  onClickThemeToggleButton() {
-    this.commonService.updateTheme();
   }
 }
