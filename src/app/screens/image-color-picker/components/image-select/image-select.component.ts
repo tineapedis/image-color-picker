@@ -39,6 +39,8 @@ export class ImageSelectComponent implements OnInit {
       this.showSnackBar('Not Image!!');
       return;
     }
+
+    this.imageColorPickerService.updateImageSrc(urlText);
   }
 
   private showSnackBar(text: string) {
