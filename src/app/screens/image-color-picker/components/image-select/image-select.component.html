@@ -12,7 +12,7 @@
 
     <mat-tab label="Image URL"> 
       <div fxLayout="column" fxLayoutAlign="space-around center" class="tab-contents">
-        <input placeholder="Input Image URL" id="input-image">
+        <input #box placeholder="Input Image URL" id="input-image" type="url" (keyup.enter)="onEnter(box.value)">
         <button mat-stroked-button>OK</button>
       </div>
     </mat-tab>

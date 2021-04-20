@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ImageColorPickerService } from '../../../../services/image-color-picker.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-image-select',
@@ -7,7 +8,12 @@ import { ImageColorPickerService } from '../../../../services/image-color-picker
   styleUrls: ['./image-select.component.scss'],
 })
 export class ImageSelectComponent implements OnInit {
-  constructor(private imageColorPickerService: ImageColorPickerService) {}
+  private regUrl = /https?:\/\/[\w/:%#$&?()~.=+-]+/;
+
+  constructor(
+    private imageColorPickerService: ImageColorPickerService,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit() {}
 
@@ -20,5 +26,18 @@ export class ImageSelectComponent implements OnInit {
       this.imageColorPickerService.updateImageSrc(reader.result as string);
     };
     reader.readAsDataURL(event.target.files[0]);
+  }
+
+  onEnter(urlText: string) {
+    if (this.regUrl.test(urlText)) {
+    } else {
+      this.showSnackBar('Please Input URL');
+    }
+  }
+
+  private showSnackBar(text: string) {
+    this.snackBar.open(text, '', {
+      duration: 2000,
+    });
   }
 }
