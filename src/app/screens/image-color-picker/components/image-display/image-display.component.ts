@@ -51,15 +51,14 @@ export class ImageDisplayComponent implements OnInit, OnDestroy, AfterViewInit {
     if (!this.canvas) {
       return;
     }
-
     const containerPickerColor = document.getElementById(
       'container-picker-color'
     );
-
     this.canvas.width = window.innerWidth * 0.8;
     this.windowWidth = window.innerWidth;
-    this.canvas.height =
-      containerPickerColor === null ? 0 : containerPickerColor.clientHeight;
+    this.canvas.height = !containerPickerColor
+      ? 0
+      : containerPickerColor.clientHeight;
   }
 
   private setUpMouseEvent() {
@@ -81,14 +80,14 @@ export class ImageDisplayComponent implements OnInit, OnDestroy, AfterViewInit {
 
   private drawImage() {
     const context = this.canvas?.getContext('2d');
-    context?.clearRect(0, 0, this.canvas?.width ?? 0, this.canvas?.height ?? 0);
+    if (!context) {
+      return;
+    }
+    const canvas = context.canvas;
+
+    context.clearRect(0, 0, canvas.width, canvas.height);
 
     this.image.onload = () => {
-      if (!context) {
-        return;
-      }
-
-      const canvas = context.canvas;
       const canvasAspect = canvas.width / canvas.height;
       const imageAspect = this.image.width / this.image.height;
       let left = 0;
