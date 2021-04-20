@@ -9,6 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ImageSelectComponent implements OnInit {
   private regUrl = /https?:\/\/[\w/:%#$&?()~.=+-]+/;
+  private regImage = /\.(jpeg|jpg|gif|png)$/;
 
   constructor(
     private imageColorPickerService: ImageColorPickerService,
@@ -29,9 +30,14 @@ export class ImageSelectComponent implements OnInit {
   }
 
   onEnter(urlText: string) {
-    if (this.regUrl.test(urlText)) {
-    } else {
+    if (!this.regUrl.test(urlText)) {
       this.showSnackBar('Please Input URL');
+      return;
+    }
+
+    if (!this.regImage.test(urlText)) {
+      this.showSnackBar('Not Image!!');
+      return;
     }
   }
 
