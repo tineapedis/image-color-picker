@@ -1,0 +1,17 @@
+#app-footer {
+  margin-top: 30px;
+  order: 5;
+  flex: 0 1 100%;
+  background-color: #3e3d3d;
+}
+
+#container-toolbar {
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+span {
+  color: white;
+}

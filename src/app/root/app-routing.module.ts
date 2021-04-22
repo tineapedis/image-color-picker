@@ -5,7 +5,7 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./screens/image-color-picker/image-color-picker.module').then(
+      import('../screens/image-color-picker/image-color-picker.module').then(
         (m) => m.ImageColorPickerModule
       ),
   },
