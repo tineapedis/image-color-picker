@@ -10,12 +10,13 @@
       </div>
     </mat-tab>
 
-    <mat-tab label="Image URL"> 
+    <!-- TODO: 外部から取得した画像は別ドメインのリソースへのアクセスとなる為制限がありCanvasからの色取得が不可能。１発自前サーバをかます。 -->
+    <!-- <mat-tab label="Image URL">
       <div fxLayout="column" fxLayoutAlign="space-around center" class="tab-contents">
         <input #box placeholder="Input Image URL" id="input-image" type="url" (keyup.enter)="onEnter(box.value)">
         <button mat-stroked-button>OK</button>
       </div>
-    </mat-tab>
+    </mat-tab> -->
 
     <mat-tab label="Paste Clipboard"> 
       <div class="tab-contents">
