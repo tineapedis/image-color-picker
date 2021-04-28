@@ -43,6 +43,14 @@ export class ImageSelectComponent implements OnInit {
     this.imageColorPickerService.updateImageSrc(urlText);
   }
 
+  // TODO: 初期読み込み時に取得できるよう修正する
+  onChangeTab() {
+    const element = document.getElementById('card-paste-area');
+    element?.addEventListener('paste', (event) => {
+      alert('TEST!!');
+    });
+  }
+
   private showSnackBar(text: string) {
     this.snackBar.open(text, '', {
       duration: 2000,
