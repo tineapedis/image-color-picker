@@ -19,14 +19,7 @@ export class ImageSelectComponent implements OnInit {
   ngOnInit() {}
 
   onChangeInputImage(event: any) {
-    const reader = new FileReader();
-    reader.onload = () => {
-      if (!reader.result) {
-        return;
-      }
-      this.imageColorPickerService.updateImageSrc(reader.result as string);
-    };
-    reader.readAsDataURL(event.target.files[0]);
+    this.readImageFile(event.target.files[0]);
   }
 
   onEnter(urlText: string) {
@@ -47,8 +40,34 @@ export class ImageSelectComponent implements OnInit {
   onChangeTab() {
     const element = document.getElementById('card-paste-area');
     element?.addEventListener('paste', (event) => {
-      alert('TEST!!');
+      const items = event.clipboardData?.items;
+      if (items === undefined) {
+        return;
+      }
+      // TODO: クソダサループ修正
+      /* eslint @typescript-eslint/prefer-for-of: 1 */
+      for (let i = 0; i < items.length; i++) {
+        const item = items[i];
+        if (item.kind === 'file') {
+          const blob = item.getAsFile();
+          if (!blob) {
+            return;
+          }
+          this.readImageFile(blob);
+        }
+      }
     });
+  }
+
+  private readImageFile(blob: File) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (!reader.result) {
+        return;
+      }
+      this.imageColorPickerService.updateImageSrc(reader.result as string);
+    };
+    reader.readAsDataURL(blob);
   }
 
   private showSnackBar(text: string) {
