@@ -1,5 +1,5 @@
-<app-header [class.dark-theme]="!isLight"></app-header>
-
-<router-outlet></router-outlet>
-
-<app-footer [class.dark-theme]="!isLight"></app-footer>
+<div class="container" fxLayout="column" fxLayoutAlign="space-between">
+  <app-header [class.dark-theme]="!isLight"></app-header>
+  <router-outlet></router-outlet>
+  <app-footer [class.dark-theme]="!isLight"></app-footer>
+</div>
