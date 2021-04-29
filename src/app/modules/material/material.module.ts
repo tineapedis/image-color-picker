@@ -8,6 +8,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
+import { MatRippleModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [],
@@ -21,6 +22,7 @@ import { MatInputModule } from '@angular/material/input';
     MatSnackBarModule,
     MatTabsModule,
     MatInputModule,
+    MatRippleModule,
   ],
 })
 export class MaterialModule {}
