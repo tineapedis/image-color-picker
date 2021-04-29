@@ -54,8 +54,10 @@ export class ImageSelectComponent implements OnInit {
             return;
           }
           this.readImageFile(blob);
+          return;
         }
       }
+      this.showSnackBar('画像をペーストしてください');
     });
   }
 
