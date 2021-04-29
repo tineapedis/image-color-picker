@@ -8,11 +8,12 @@
   border-radius: 4px;
   background-color: #e2e6ec;
   color: gray;
+  &:hover {
+    background: linear-gradient(-135deg, #E4A972, #9941D8);;
+    color: white;
+  }
 }
-.file-button:hover {
-  background-color: #5a6985;
-  color: white;
-}
+
 .file-input {
   position: absolute;
   top: 0;
