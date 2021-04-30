@@ -9,6 +9,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
 import { MatRippleModule } from '@angular/material/core';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [],
@@ -23,6 +24,7 @@ import { MatRippleModule } from '@angular/material/core';
     MatTabsModule,
     MatInputModule,
     MatRippleModule,
+    MatSidenavModule,
   ],
 })
 export class MaterialModule {}
