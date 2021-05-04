@@ -5,14 +5,14 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
+      import('../screens/top/top.module').then((m) => m.TopModule),
+  },
+  {
+    path: 'image-color-picker',
+    loadChildren: () =>
       import('../screens/image-color-picker/image-color-picker.module').then(
         (m) => m.ImageColorPickerModule
       ),
-  },
-  {
-    path: 'top',
-    loadChildren: () =>
-      import('../screens/top/top.module').then((m) => m.TopModule),
   },
 ];
 
