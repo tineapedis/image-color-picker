@@ -1,0 +1,20 @@
+#top-container {
+  padding: 10px;
+}
+
+#title-container {
+  padding: 25px;
+  border-radius: 2px;
+  #main {
+    font-size: 30px;
+  }
+  #sub {
+    font-size: 15px;
+  }
+}
+
+.line {
+  height: 3px;
+  background: linear-gradient(40deg, #16F01F, #8A25B1);
+  border-radius: 2px;
+}
