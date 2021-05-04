@@ -9,6 +9,11 @@ const routes: Routes = [
         (m) => m.ImageColorPickerModule
       ),
   },
+  {
+    path: 'top',
+    loadChildren: () =>
+      import('../screens/top/top.module').then((m) => m.TopModule),
+  },
 ];
 
 @NgModule({
