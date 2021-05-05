@@ -8,7 +8,5 @@ import { Component, OnInit } from '@angular/core';
 export class TopComponent implements OnInit {
   constructor() {}
 
-  ngOnInit() {
-    console.log('村田');
-  }
+  ngOnInit() {}
 }
