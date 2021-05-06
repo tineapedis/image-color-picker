@@ -1,22 +1,16 @@
-<div *ngFor="let test of tests" id="container-tools">
-  <p class="font-medium-size-bold">{{test}}</p>
-
+<div *ngFor="let toolBox of toolBoxes" id="container-tools">
+  <p class="font-medium-size-bold">{{toolBox.name}}</p>
   <div fxLayout="row wrap" fxLayoutAlign="space-around">
-  
-    <mat-card class="card-tool">
+    <mat-card class="card-tool" *ngFor="let tool of toolBox.tools" >
       <div fxLayout="column" class="max-size">
         <div fxFlex="15">
-          <p class="font-small-size">Image Color Picker</p>
+          <p class="font-small-size">{{tool.name}}</p>
         </div>
-        <div id="box-image" fxFlex="55"></div>
-        <div fxFlex="30">
-          <p class="font-xsmall-size">Pick color from Image. Pick color from Image. Pick color from Image</p>
+        <div id="box-image" fxFlex="60"></div>
+        <div fxFlex="25">
+          <p class="font-xsmall-size">{{tool.caption}}</p>
         </div>
       </div>
-    </mat-card>
-
-    <mat-card class="card-tool">
-      <p class="font-small-size">Color Picker</p>
     </mat-card>
   </div>
 </div>
