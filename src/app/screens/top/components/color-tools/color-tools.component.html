@@ -1,10 +1,22 @@
-<div *ngFor="let station of tests" id="container-tools">
-  <h1>{{station}}</h1>
+<div *ngFor="let test of tests" id="container-tools">
+  <p class="font-medium-size-bold">{{test}}</p>
+
   <div fxLayout="row wrap" fxLayoutAlign="space-around">
-    <div class="item item1">1</div>
-    <div class="item item2">2</div>
-    <div class="item item3">3</div>
-    <div class="item item4">4</div>
-    <div class="item item5">5</div>
+  
+    <mat-card class="card-tool">
+      <div fxLayout="column" class="max-size">
+        <div fxFlex="15">
+          <p class="font-small-size">Image Color Picker</p>
+        </div>
+        <div id="box-image" fxFlex="55"></div>
+        <div fxFlex="30">
+          <p class="font-xsmall-size">Pick color from Image. Pick color from Image. Pick color from Image</p>
+        </div>
+      </div>
+    </mat-card>
+
+    <mat-card class="card-tool">
+      <p class="font-small-size">Color Picker</p>
+    </mat-card>
   </div>
 </div>

@@ -1,29 +1,27 @@
-$itemColors:(
-  item1: red,
-  item2: blue,
-  item3: green,
-  item4: pink,
-  item5: slategray
-);
-
-@each $item, $color in $itemColors {
-  .#{$item} {
-    background: $color;
-  }
-}
-
-.item {
+.card-tool {
   width: 170px;
   height: 170px;
   margin-top: 15px;
 }
 
-h1 {
-  margin: 0;
-}
-
 #container-tools {
-  background: yellow;
+  background: #edf2ed;
+  border: yellow;
   margin-top: 20px;
   padding: 15px;
+}
+
+#box-image {
+  // height: 100px;
+  // width: 100px;
+  background: yellowgreen;
+}
+
+.max-size {
+  width: 100%;
+  height: 100%;
+}
+
+p {
+  line-height: normal;
 }
