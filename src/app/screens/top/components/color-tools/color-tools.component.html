@@ -2,7 +2,7 @@
   <p class="font-medium-size-bold">{{toolBox.name}}</p>
   <div fxLayout="row wrap" fxLayoutAlign="space-around">
     <mat-card class="card-tool" *ngFor="let tool of toolBox.tools" >
-      <div fxLayout="column" class="max-size">
+      <div fxLayout="column" class="fit-parent">
         <div fxFlex="15">
           <p class="font-small-size">{{tool.name}}</p>
         </div>
