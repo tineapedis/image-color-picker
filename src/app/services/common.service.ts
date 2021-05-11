@@ -39,8 +39,7 @@ export class CommonService {
     ],
   };
   // eslint-disable-next-line
-    toolBoxes = [this.informationBox, this.pickerToolBox];
-
+  toolBoxes = [this.informationBox, this.pickerToolBox];
 
   constructor() {
     this.isLightObserver$ = this.isLightSubject.asObservable();
