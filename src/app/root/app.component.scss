@@ -5,3 +5,14 @@
 mat-drawer {
   width: 300px;
 }
+#container-user {
+  background-color: red;
+  height: 100px;
+  width: 100%;
+}
+mat-list-item {
+  a {
+    height: 100%;
+    width: 100%; 
+  }
+}
