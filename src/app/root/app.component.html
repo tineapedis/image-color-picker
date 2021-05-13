@@ -1,15 +1,22 @@
 <mat-drawer-container autosize>
   <mat-drawer #drawer mode="side">
-    <div id="container-user">
-      <h1>test </h1>
+    <!-- mat-drawer内のコンポーネント化 -->
+    <div id="container-user" fxLayout="row">
+      <div fxFlex="40" id="color" fxLayoutAlign="center center">
+        <div class="circle" id="circle-color"></div>
+      </div>
+      <div fxFlex="60" fxLayout="column" fxLayoutAlign="center">
+        <p>RGB: {{colorCode.rgb}}</p>
+        <p>HEX: {{colorCode.hex}}</p>
+      </div>
     </div>
     <mat-nav-list>
       <div *ngFor="let toolBox of toolBoxes">
-        <p>{{toolBox.name}}</p>
+        <mat-divider></mat-divider>
+        <div mat-subheader>{{toolBox.name}}</div>
         <mat-list-item *ngFor="let tool of toolBox.tools">
           <a [routerLink]="[tool.url]">{{tool.name}}</a>
         </mat-list-item>
-        <mat-divider></mat-divider>
       </div>
     </mat-nav-list>
   </mat-drawer>

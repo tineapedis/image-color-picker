@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Input } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CommonService } from 'src/app/services/common.service';
 
 @Component({
   selector: 'app-picked-color',
@@ -8,12 +9,15 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./picked-color.component.scss'],
 })
 export class PickedColorComponent implements OnInit {
-  selectedRGB = '0 0 0';
+  selectedRGB = '255 255 255';
   selectedHEX = '#FFFFFF';
-  pointerRGB = '0 0 0';
+  pointerRGB = '255 255 255';
   pointerHEX = '#FFFFFF';
 
-  constructor(private snackBar: MatSnackBar) {}
+  constructor(
+    private snackBar: MatSnackBar,
+    private commonService: CommonService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -31,6 +35,11 @@ export class PickedColorComponent implements OnInit {
     if (selectedColorDisplay) {
       selectedColorDisplay.style.backgroundColor = this.selectedHEX;
     }
+
+    this.commonService.updateColorCode({
+      rgb: this.selectedRGB,
+      hex: this.selectedHEX,
+    });
   }
 
   @Input() set setPointerRGB(value: string) {
