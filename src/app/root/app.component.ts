@@ -24,6 +24,12 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(private commonService: CommonService) {}
 
   ngOnInit() {
+    this.subscription = this.commonService.isLightObserver$.subscribe(
+      (isLight) => {
+        this.isLight = isLight;
+      }
+    );
+
     this.subscription = this.commonService.colorCodeObserver$.subscribe(
       (colorCode) => {
         this.colorCode = colorCode;
