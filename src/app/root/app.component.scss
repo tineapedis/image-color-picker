@@ -1,21 +1,31 @@
-.container {
-  min-height: 100vh;
+p {
+  margin: 0;
 }
-
+.mat-list-base .mat-list-item, .mat-list-base .mat-list-option {
+  height: auto;
+}
 mat-drawer {
   width: 300px;
 }
+
 #container-user {
   height: 100px;
   width: 100%;
 }
-mat-list-item {
-  a {
-    height: 100%;
-    width: 100%; 
-  }
+
+.link-title {
+  margin-top: 13px;
+  margin-left: 10px;
 }
-.circle{
+.link {
+  display: block;
+  padding: 6px;
+}
+
+.mat-list-item {
+  height: auto;
+}
+.circle {
   width: 80px;
   height: 80px;
   border-radius: 50%;
