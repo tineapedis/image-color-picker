@@ -26,19 +26,18 @@ export class CommonService {
     name: 'Picker',
     tools: [
       {
-        name: 'Image Color Picker',
-        caption:
-          'Pick color from Image. Pick color from Image. Pick color from Image',
+        name: 'Slider',
+        caption: 'Slider Caption',
         url: '/image-color-picker',
       },
       {
-        name: 'Color Picker',
-        caption: 'color picker caption',
+        name: 'Circle',
+        caption: 'Circle Caption',
         url: '/image-color-picker',
       },
       {
         name: 'Image Color Picker',
-        caption: 'test2',
+        caption: 'Image Color Picker Caption',
         url: '/image-color-picker',
       },
     ],
