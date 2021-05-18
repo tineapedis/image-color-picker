@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ImageColorPickerService } from '../../../../services/image-color-picker.service';
+import { ImageColorPickerService } from '../../../../../services/image-color-picker.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({

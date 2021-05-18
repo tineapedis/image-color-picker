@@ -28,7 +28,7 @@ export class CommonService {
       {
         name: 'Slider',
         caption: 'Slider Caption',
-        url: '/image-color-picker',
+        url: '/slider',
       },
       {
         name: 'Circle',

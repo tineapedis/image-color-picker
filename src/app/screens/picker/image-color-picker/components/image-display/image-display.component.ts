@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ImageColorPickerService } from '../../../../services/image-color-picker.service';
+import { ImageColorPickerService } from '../../../../../services/image-color-picker.service';
 
 @Component({
   selector: 'app-image-display',

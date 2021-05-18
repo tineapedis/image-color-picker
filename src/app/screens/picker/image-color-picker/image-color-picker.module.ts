@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { MaterialModule } from '../../modules/material/material.module';
+import { MaterialModule } from '../../../modules/material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 
@@ -10,7 +10,7 @@ import { ImageDisplayComponent } from './components/image-display/image-display.
 import { PickedColorComponent } from './components/picked-color/picked-color.component';
 import { ImageSelectComponent } from './components/image-select/image-select.component';
 
-import { ImageColorPickerService } from '../../services/image-color-picker.service';
+import { ImageColorPickerService } from '../../../services/image-color-picker.service';
 
 const routes: Routes = [{ path: '', component: ImageColorPickerComponent }];
 

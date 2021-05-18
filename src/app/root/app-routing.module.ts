@@ -10,8 +10,15 @@ const routes: Routes = [
   {
     path: 'image-color-picker',
     loadChildren: () =>
-      import('../screens/image-color-picker/image-color-picker.module').then(
-        (m) => m.ImageColorPickerModule
+      import(
+        '../screens/picker/image-color-picker/image-color-picker.module'
+      ).then((m) => m.ImageColorPickerModule),
+  },
+  {
+    path: 'slider',
+    loadChildren: () =>
+      import('../screens/picker/slider/slider.module').then(
+        (m) => m.SliderModule
       ),
   },
 ];
