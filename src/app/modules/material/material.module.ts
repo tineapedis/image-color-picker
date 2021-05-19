@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRippleModule } from '@angular/material/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
   declarations: [],
@@ -27,6 +28,7 @@ import { MatListModule } from '@angular/material/list';
     MatRippleModule,
     MatSidenavModule,
     MatListModule,
+    MatSidenavModule,
   ],
 })
 export class MaterialModule {}
