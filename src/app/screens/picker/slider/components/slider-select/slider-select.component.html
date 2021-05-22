@@ -3,19 +3,21 @@
 
     <mat-tab label="RGB"> 
       <div fxLayoutAlign="center center">
-        <mat-card fxLayoutAlign="center center">
-          
-        </mat-card>
+        <h1>R: {{rgb.red}}</h1>
+        <mat-slider #sliderRed [max]="255" (input)="onChangeRedSlider($event)" class="red-slider"></mat-slider>
+        <h1>G: {{rgb.green}}</h1>
+        <mat-slider [max]="255" (input)="onChangeGreenSlider($event)"></mat-slider>
+        <h1>B: {{rgb.blue}}</h1>
+        <mat-slider [max]="255" (input)="onChangeBlueSlider($event)"></mat-slider>
       </div>
     </mat-tab>
 
     <mat-tab label="HSB"> 
       <ng-template matTabContent>
         <div fxLayoutAlign="center center">
-          <mat-card fxLayoutAlign="center center">
-            <mat-icon>image</mat-icon>
-            <p>Cmd + V</p>
-          </mat-card>
+          <mat-slider aria-label="unit(s)"></mat-slider>
+          <mat-slider aria-label="unit(s)"></mat-slider>
+          <mat-slider aria-label="unit(s)"></mat-slider>
         </div>
       </ng-template>
     </mat-tab>
@@ -23,12 +25,13 @@
     <mat-tab label="CMYK"> 
       <ng-template matTabContent>
         <div fxLayoutAlign="center center">
-          <mat-card class="file-button" fxLayoutAlign="center center">
-
-            <p>Cmd + V</p>
-          </mat-card>
+          <mat-slider aria-label="unit(s)"></mat-slider>
+          <mat-slider aria-label="unit(s)"></mat-slider>
+          <mat-slider aria-label="unit(s)"></mat-slider>
+          <mat-slider aria-label="unit(s)"></mat-slider>
         </div>
       </ng-template>
     </mat-tab>
+
   </mat-tab-group>
 </mat-card>

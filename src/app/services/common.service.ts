@@ -6,12 +6,12 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class CommonService {
-  colorCodeObserver$;
+  // colorCodeObserver$;
   isLightObserver$;
-  private colorCodeSubject = new BehaviorSubject<ColorCode>({
-    rgb: '255 255 255',
-    hex: '#FFFFFF',
-  });
+  // private colorCodeSubject = new BehaviorSubject<ColorCode>({
+  //   rgb: '255 255 255',
+  //   hex: '#FFFFFF',
+  // });
   private isLightSubject = new BehaviorSubject<boolean>(true);
   private drawer: MatDrawer | undefined;
   // TODO: CommonServiceから剥がす
@@ -47,7 +47,7 @@ export class CommonService {
 
   constructor() {
     this.isLightObserver$ = this.isLightSubject.asObservable();
-    this.colorCodeObserver$ = this.colorCodeSubject.asObservable();
+    // this.colorCodeObserver$ = this.colorCodeSubject.asObservable();
   }
 
   updateTheme() {
@@ -65,7 +65,7 @@ export class CommonService {
     this.drawer.toggle();
   }
 
-  updateColorCode(colorCode: ColorCode) {
-    this.colorCodeSubject.next(colorCode);
-  }
+  // updateColorCode(colorCode: ColorCode) {
+  //   this.colorCodeSubject.next(colorCode);
+  // }
 }

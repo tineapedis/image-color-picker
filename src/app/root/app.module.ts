@@ -6,9 +6,11 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from '../modules/material/material.module';
 import { HeaderComponent } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CommonService } from '../services/common.service';
 import { FooterComponent } from './footer/footer.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+
+import { CommonService } from '../services/common.service';
+import { ColorService } from '../services/color.service';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent],
@@ -19,7 +21,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MaterialModule,
     FlexLayoutModule,
   ],
-  providers: [CommonService],
+  providers: [CommonService, ColorService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
