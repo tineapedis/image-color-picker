@@ -9,43 +9,31 @@ import { ColorService } from 'src/app/services/color.service';
   styleUrls: ['./picked-color.component.scss'],
 })
 export class PickedColorComponent implements OnInit {
-  selectedRGB = '255 255 255';
-  selectedHEX = '#FFFFFF';
   pointerRGB = '255 255 255';
   pointerHEX = '#FFFFFF';
+  colorService: ColorService;
 
-  constructor(
-    private snackBar: MatSnackBar,
-    private colorService: ColorService
-  ) {}
+  constructor(private snackBar: MatSnackBar, colorService: ColorService) {
+    this.colorService = colorService;
+  }
 
   ngOnInit(): void {}
 
   @Input() set setSelectedRGB(value: string) {
-    this.selectedRGB = value;
     const rgbArray = value.split(' ');
-    this.selectedHEX = this.convertRgbToHex(
-      rgbArray[0],
-      rgbArray[1],
-      rgbArray[2]
-    );
+
+    this.colorService.updateRGB({
+      red: Number(rgbArray[0]),
+      green: Number(rgbArray[1]),
+      blue: Number(rgbArray[2]),
+    });
+
     const selectedColorDisplay = document.getElementById(
       'selected-color-display'
     );
     if (selectedColorDisplay) {
-      selectedColorDisplay.style.backgroundColor = this.selectedHEX;
+      selectedColorDisplay.style.backgroundColor = this.colorService.colorCode.hex;
     }
-
-    this.colorService.updateRGB({
-      red: Number(this.selectedRGB.split(' ')[0]),
-      green: Number(this.selectedRGB.split(' ')[1]),
-      blue: Number(this.selectedRGB.split(' ')[2]),
-    });
-
-    // this.commonService.updateColorCode({
-    //   rgb: this.selectedRGB,
-    //   hex: this.selectedHEX,
-    // });
   }
 
   @Input() set setPointerRGB(value: string) {
@@ -79,13 +67,13 @@ export class PickedColorComponent implements OnInit {
   // ---------------------------------------------------------
 
   onClickRgbButton() {
-    this.showSnackBar(`RGB: ${this.selectedRGB}`);
-    this.copyTextToClipboard(this.selectedRGB);
+    this.showSnackBar(`RGB: ${this.colorService.colorCode.rgb}`);
+    this.copyTextToClipboard(this.colorService.colorCode.rgb);
   }
 
   onClickHexButton() {
-    this.showSnackBar(`HEX: ${this.selectedHEX}`);
-    this.copyTextToClipboard(this.selectedHEX);
+    this.showSnackBar(`HEX: ${this.colorService.colorCode.hex}`);
+    this.copyTextToClipboard(this.colorService.colorCode.hex);
   }
 
   private showSnackBar(text: string) {
