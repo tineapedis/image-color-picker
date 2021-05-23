@@ -8,13 +8,13 @@ export class ColorService implements Color {
   rgbObserver$;
 
   rgb: RGB = {
-    red: 0,
-    green: 0,
-    blue: 0,
+    red: 255,
+    green: 255,
+    blue: 255,
   };
   colorCode: ColorCode = {
     rgb: this.rgbColorCode(),
-    hex: '#ffffff',
+    hex: this.hexColorCode(),
   };
   private rgbSubject = new BehaviorSubject<RGB>(this.rgb);
 
@@ -22,8 +22,25 @@ export class ColorService implements Color {
     this.rgbObserver$ = this.rgbSubject.asObservable();
   }
 
+  updateRed(red: number) {
+    this.rgb.red = red;
+    this.updateRGB(this.rgb);
+  }
+
+  updateGreen(green: number) {
+    this.rgb.green = green;
+    this.updateRGB(this.rgb);
+  }
+
+  updateBlue(blue: number) {
+    this.rgb.blue = blue;
+    this.updateRGB(this.rgb);
+  }
+
   updateRGB(rgb: RGB) {
+    this.rgb = rgb;
     this.rgbSubject.next(rgb);
+    this.colorCode.rgb = this.rgbColorCode();
     this.colorCode.hex = this.convertRgbToHex(rgb);
   }
 
@@ -33,7 +50,12 @@ export class ColorService implements Color {
     return `${this.rgb.red} ${this.rgb.green} ${this.rgb.blue}`;
   }
 
+  hexColorCode(): string {
+    return this.convertRgbToHex(this.rgb);
+  }
+
   /// converter
+
   convertRgbToHex(rgb: RGB) {
     return (
       '#' +

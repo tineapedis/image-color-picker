@@ -36,8 +36,8 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
       }
     );
 
+    const circleClor = document.getElementById('circle-color');
     this.subscription = this.colorService.rgbObserver$.subscribe((rgb) => {
-      const circleClor = document.getElementById('circle-color');
       if (circleClor) {
         circleClor.style.backgroundColor = this.colorService.convertRgbToHex(
           rgb

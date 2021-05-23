@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { MatSlider } from '@angular/material/slider';
-import { CommonService } from '../../../../../services/common.service';
 import { Subscription } from 'rxjs';
+import { ColorService } from 'src/app/services/color.service';
 
 @Component({
   selector: 'app-slider-select',
@@ -9,45 +9,37 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./slider-select.component.scss'],
 })
 export class SliderSelectComponent implements OnInit, AfterViewInit {
-  @ViewChild('sliderRed') slider!: MatSlider;
-  // color = ColorData
-  rgb: RGB = {
-    red: 0,
-    green: 0,
-    blue: 0,
-  };
+  @ViewChild('sliderRed') sliderRed!: MatSlider;
+  @ViewChild('sliderGreen') sliderGreen!: MatSlider;
+  @ViewChild('sliderBlue') sliderBlue!: MatSlider;
+  colorService: ColorService;
   private subscription!: Subscription;
 
-  constructor(private commonService: CommonService) {}
+  constructor(colorService: ColorService) {
+    this.colorService = colorService;
+  }
 
   ngOnInit() {
-    // this.subscription = this.commonService.colorCodeObserver$.subscribe(
-    //   (colorCode) => {
-    //     this.colorCode = colorCode;
-    //     const circleClor = document.getElementById('circle-color');
-    //     if (circleClor) {
-    //       circleClor.style.backgroundColor = colorCode.hex;
-    //     }
-    //   }
-    // );
-    // this.subscription = this.commonService.colorCodeObserver$.subscribe(
-    //   (colorCode) => {
-    //     colorCode.rgb
+    // this.subscription = this.colorService.rgbObserver$.subscribe(
+    //   (rgb) => {
+    //     this.sliderRed.value = rgb.red
     //   }
     // );
   }
 
   ngAfterViewInit() {
-    this.slider.value = this.rgb.red;
+    this.sliderRed.value = this.colorService.rgb.red;
+    this.sliderGreen.value = this.colorService.rgb.green;
+    this.sliderBlue.value = this.colorService.rgb.blue;
   }
 
   onChangeRedSlider(event: any) {
-    this.rgb.red = event.value;
+    this.colorService.updateRed(event.value);
   }
   onChangeGreenSlider(event: any) {
-    this.rgb.green = event.value;
+    this.colorService.updateGreen(event.value);
   }
   onChangeBlueSlider(event: any) {
-    this.rgb.blue = event.value;
+    this.colorService.updateBlue(event.value);
   }
 }
