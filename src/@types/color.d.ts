@@ -11,6 +11,19 @@ type RGB = {
   blue: number;
 };
 
+type CMY = {
+  cyan: number;
+  magenta: number;
+  yellow: number;
+};
+
+type CMYK = {
+  cyan: number;
+  magenta: number;
+  yellow: number;
+  keyPlate: number;
+};
+
 type ColorCode = {
   rgb: string;
   hex: string;

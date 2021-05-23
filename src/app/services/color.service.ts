@@ -12,6 +12,17 @@ export class ColorService implements Color {
     green: 255,
     blue: 255,
   };
+  cmy: CMY = {
+    cyan: 1,
+    magenta: 1,
+    yellow: 1,
+  };
+  cmyk: CMYK = {
+    cyan: 1,
+    magenta: 1,
+    yellow: 1,
+    keyPlate: 1,
+  };
   colorCode: ColorCode = {
     rgb: this.rgbColorCode(),
     hex: this.hexColorCode(),
@@ -42,6 +53,8 @@ export class ColorService implements Color {
     this.rgbSubject.next(rgb);
     this.colorCode.rgb = this.rgbColorCode();
     this.colorCode.hex = this.convertRgbToHex(rgb);
+    this.cmy = this.convertRgbToCmy(rgb);
+    this.cmyk = this.converCmyToCmyk(this.cmy);
   }
 
   /// ColorCode
@@ -58,15 +71,33 @@ export class ColorService implements Color {
 
   convertRgbToHex(rgb: RGB) {
     return (
-      '#' +
-      this.to16(rgb.red) +
-      this.to16(rgb.green) +
-      this.to16(Number(rgb.blue))
+      '#' + this.to16(rgb.red) + this.to16(rgb.green) + this.to16(rgb.blue)
     );
   }
 
   to16(color: number) {
     const hex = color.toString(16);
     return hex.length === 1 ? '0' + hex : hex;
+  }
+
+  convertRgbToCmy(rgb: RGB): CMY {
+    return {
+      cyan: 1 - rgb.red / 255,
+      magenta: 1 - rgb.green / 255,
+      yellow: 1 - rgb.blue / 255,
+    };
+  }
+
+  converCmyToCmyk(cmy: CMY): CMYK {
+    const cmyArray = [cmy.cyan, cmy.magenta, cmy.yellow];
+    const k = Math.min.apply(0, cmyArray);
+    const cmyk =
+      k === 1 ? [0, 0, 0] : cmyArray.map((value) => (value - k) / (1 - k));
+    return {
+      cyan: cmyk[0],
+      magenta: cmyk[1],
+      yellow: cmyk[2],
+      keyPlate: k,
+    };
   }
 }
