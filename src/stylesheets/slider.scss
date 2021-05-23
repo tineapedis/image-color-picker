@@ -1,0 +1,39 @@
+@mixin slider-color($color) {
+  .mat-slider-thumb,
+  .mat-slider-thumb-label,
+  .mat-slider-track-fill {
+    background-color: $color !important;
+  }
+  .mat-slider-thumb {
+    background-color: $color !important;
+  }
+  .mat-slider-thumb-label {
+    background-color: $color !important;
+  }
+  .mat-slider-track-fill {
+    background-color: $color !important;
+  }
+}
+
+.slider-red {
+  @include slider-color(red);
+}
+.slider-green {
+  @include slider-color(green);
+}
+.slider-blue {
+  @include slider-color(blue);
+}
+
+.slider-cyan {
+  @include slider-color(cyan);
+}
+.slider-magenta {
+  @include slider-color(magenta);
+}
+.slider-yellow {
+  @include slider-color(yellow);
+}
+.slider-keyPlate {
+  @include slider-color(black);
+}

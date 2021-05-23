@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { CommonService } from '../../../../services/common.service';
+import { CommonService } from 'src/app/services/common.service';
+import { ColorService } from 'src/app/services/color.service';
 
 @Component({
   selector: 'app-image-color-picker',
@@ -8,12 +9,18 @@ import { CommonService } from '../../../../services/common.service';
   styleUrls: ['./image-color-picker.component.scss'],
 })
 export class ImageColorPickerComponent implements OnInit, OnDestroy {
-  isLight = true;
   selectedRGB = '255 255 255';
   pointerRGB = '255 255 255';
+  isLight = true;
+  colorService: ColorService;
   private subscription!: Subscription;
 
-  constructor(private commonService: CommonService) {}
+  constructor(
+    private commonService: CommonService,
+    colorService: ColorService
+  ) {
+    this.colorService = colorService;
+  }
 
   ngOnInit() {
     this.subscription = this.commonService.isLightObserver$.subscribe(

@@ -6,6 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { CommonService } from '../services/common.service';
+import { ColorService } from '../services/color.service';
 import { Subscription } from 'rxjs';
 import { MatDrawer } from '@angular/material/sidenav/drawer';
 
@@ -16,31 +17,40 @@ import { MatDrawer } from '@angular/material/sidenav/drawer';
 })
 export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('drawer') drawer!: MatDrawer;
-  colorCode = { rgb: '0,0,0', hex: '#FFFFFF' };
   toolBoxes = this.commonService.toolBoxes;
   isLight = true;
+  colorService: ColorService;
   private subscription!: Subscription;
 
-  constructor(private commonService: CommonService) {}
-
-  ngOnInit() {
-    this.subscription = this.commonService.colorCodeObserver$.subscribe(
-      (colorCode) => {
-        this.colorCode = colorCode;
-
-        const circleClor = document.getElementById('circle-color');
-        if (circleClor) {
-          circleClor.style.backgroundColor = colorCode.hex;
-        }
-      }
-    );
+  constructor(
+    private commonService: CommonService,
+    colorService: ColorService
+  ) {
+    this.colorService = colorService;
   }
 
-  ngAfterViewInit() {
-    this.commonService.setDrawer(this.drawer);
+  ngOnInit() {
+    this.subscription = this.commonService.isLightObserver$.subscribe(
+      (isLight) => {
+        this.isLight = isLight;
+      }
+    );
+
+    const circleClor = document.getElementById('circle-color');
+    this.subscription = this.colorService.rgbObserver$.subscribe((rgb) => {
+      if (circleClor) {
+        circleClor.style.backgroundColor = this.colorService.convertRgbToHex(
+          rgb
+        );
+      }
+    });
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  ngAfterViewInit() {
+    this.commonService.setDrawer(this.drawer);
   }
 }

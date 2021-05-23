@@ -1,8 +1,11 @@
 <mat-toolbar id="app-header" class="dark-theme">
     <button mat-icon-button (click)="onClickMenuButton()">
-        <mat-icon>menu</mat-icon>
+        <mat-icon *ngIf="!isDrawerOpened; else showCloseIcon">menu</mat-icon>
+        <ng-template #showCloseIcon>
+            <mat-icon>first_page</mat-icon>
+        </ng-template>
     </button>
-    <span>Colorfull</span>
+    <span>Color App</span>
     <span id="spacer"></span>
     <button mat-icon-button (click)="onClickThemeToggleButton()">
         <mat-icon *ngIf="isLight; else showDarkModeIcon">light_mode</mat-icon>

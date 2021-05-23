@@ -2,10 +2,10 @@
   <mat-card-content fxLayout="column" fxLayoutAlign="center center">
     <p class="title">Selected</p>
     <button mat-stroked-button (click)=onClickRgbButton()>
-      RGB: {{ selectedRGB }}
+      RGB: {{ colorService.colorCode.rgb }}
     </button>
     <button mat-stroked-button class="color-button" (click)=onClickHexButton()>
-      HEX: {{ selectedHEX }}
+      HEX: {{ colorService.colorCode.hex }}
     </button>
     <button mat-stroked-button class="color-button">CMYK: 0 0 0 0</button>
     <div class="color-display" id="selected-color-display"></div>

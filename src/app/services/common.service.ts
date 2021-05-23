@@ -6,12 +6,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class CommonService {
-  colorCodeObserver$;
   isLightObserver$;
-  private colorCodeSubject = new BehaviorSubject<ColorCode>({
-    rgb: '255 255 255',
-    hex: '#FFFFFF',
-  });
   private isLightSubject = new BehaviorSubject<boolean>(true);
   private drawer: MatDrawer | undefined;
   // TODO: CommonServiceから剥がす
@@ -26,19 +21,18 @@ export class CommonService {
     name: 'Picker',
     tools: [
       {
-        name: 'Image Color Picker',
-        caption:
-          'Pick color from Image. Pick color from Image. Pick color from Image',
-        url: '/image-color-picker',
+        name: 'Slider',
+        caption: 'Slider Caption',
+        url: '/slider',
       },
-      {
-        name: 'Color Picker',
-        caption: 'color picker caption',
-        url: '/image-color-picker',
-      },
+      // {
+      //   name: 'Circle',
+      //   caption: 'Circle Caption',
+      //   url: '/image-color-picker',
+      // },
       {
         name: 'Image Color Picker',
-        caption: 'test2',
+        caption: 'Image Color Picker Caption',
         url: '/image-color-picker',
       },
     ],
@@ -48,7 +42,6 @@ export class CommonService {
 
   constructor() {
     this.isLightObserver$ = this.isLightSubject.asObservable();
-    this.colorCodeObserver$ = this.colorCodeSubject.asObservable();
   }
 
   updateTheme() {
@@ -64,9 +57,5 @@ export class CommonService {
       return;
     }
     this.drawer.toggle();
-  }
-
-  updateColorCode(colorCode: ColorCode) {
-    this.colorCodeSubject.next(colorCode);
   }
 }

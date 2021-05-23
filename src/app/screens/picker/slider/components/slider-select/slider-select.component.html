@@ -1,0 +1,70 @@
+<mat-card>
+  <mat-tab-group mat-align-tabs="center" animationDuration="0ms" [disableRipple]="true">
+
+    <mat-tab label="RGB"> 
+      <div fxLayout="column" fxLayoutAlign="center center">
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+          <p class="font-medium-size">R</p>
+          <mat-slider #sliderRed [max]="255" (input)="onChangeRedSlider($event)" class="slider-red"></mat-slider>
+          <p class="text-value font-medium-size">{{colorService.rgb.red}}</p>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+          <p class="font-medium-size">G</p>
+          <mat-slider #sliderGreen [max]="255" (input)="onChangeGreenSlider($event)" class="slider-green"></mat-slider>
+          <p class="text-value font-medium-size">{{colorService.rgb.green}}</p>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+          <p class="font-medium-size">B</p>
+          <mat-slider #sliderBlue [max]="255" (input)="onChangeBlueSlider($event)" class="slider-blue"></mat-slider>
+          <p class="text-value font-medium-size">{{colorService.rgb.blue}}</p>
+        </div>
+      </div>
+    </mat-tab>
+
+    <!-- <mat-tab label="HSB"> 
+      <div fxLayout="column" fxLayoutAlign="center center">
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+          <p class="font-medium-size">H</p>
+          <mat-slider #sliderRed [max]="255" (input)="onChangeRedSlider($event)" class="slide-red"></mat-slider>
+          <p class="text-value font-medium-size">{{colorService.rgb.red}}</p>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+          <p class="font-medium-size">S</p>
+          <mat-slider #sliderGreen [max]="255" (input)="onChangeGreenSlider($event)" class="slider-green"></mat-slider>
+          <p class="text-value font-medium-size">{{colorService.rgb.green}}</p>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+          <p class="font-medium-size">B</p>
+          <mat-slider #sliderBlue [max]="255" (input)="onChangeBlueSlider($event)" class="slide-blue"></mat-slider>
+          <p class="text-value font-medium-size">{{colorService.rgb.blue}}</p>
+        </div>
+      </div>
+    </mat-tab> -->
+
+    <mat-tab label="CMYK"> 
+      <div fxLayout="column" fxLayoutAlign="center center">
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+          <p class="font-medium-size">C</p>
+          <mat-slider #sliderRed [max]="255" (input)="onChangeRedSlider($event)" class="slider-cyan"></mat-slider>
+          <p class="text-value font-medium-size">{{colorService.rgb.red}}</p>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+          <p class="font-medium-size">M</p>
+          <mat-slider #sliderGreen [max]="255" (input)="onChangeGreenSlider($event)" class="slider-magenta"></mat-slider>
+          <p class="text-value font-medium-size">{{colorService.rgb.green}}</p>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+          <p class="font-medium-size">Y</p>
+          <mat-slider #sliderBlue [max]="255" (input)="onChangeBlueSlider($event)" class="slider-yellow"></mat-slider>
+          <p class="text-value font-medium-size">{{colorService.rgb.blue}}</p>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+          <p class="font-medium-size">K</p>
+          <mat-slider #sliderBlue [max]="255" (input)="onChangeBlueSlider($event)" class="slider-keyPlate"></mat-slider>
+          <p class="text-value font-medium-size">{{colorService.rgb.blue}}</p>
+        </div>
+      </div>
+    </mat-tab>
+
+  </mat-tab-group>
+</mat-card>

@@ -1,0 +1,30 @@
+$main-font-family: 'Source Sans Pro', sans-serif;
+.font-main {
+  font-family: $main-font-family;
+}
+
+.font-xsmall-size {
+  font-size: 15px;
+  font-family: $main-font-family;
+}
+.font-small-size {
+  font-size: 20px;
+  font-family: $main-font-family;
+}
+.font-medium-size {
+  font-size: 30px;
+  font-family: $main-font-family;
+}
+.font-big-size {
+  font-size: 40px;
+  font-family: $main-font-family;
+}
+
+.font-medium-size-bold {
+  @extend .font-medium-size;
+  font-weight: bold;
+}
+.font-small-size-bold {
+  @extend .font-small-size;
+  font-weight: bold;
+}

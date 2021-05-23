@@ -9,6 +9,7 @@ import { Subscription } from 'rxjs';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   isLight = true;
+  isDrawerOpened = false;
   private subscription!: Subscription;
 
   constructor(private commonService: CommonService) {}
@@ -30,6 +31,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onClickMenuButton() {
+    this.isDrawerOpened = !this.isDrawerOpened;
     this.commonService.toggleDrawer();
   }
 }
