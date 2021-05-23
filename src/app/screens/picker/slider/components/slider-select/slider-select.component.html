@@ -2,13 +2,22 @@
   <mat-tab-group mat-align-tabs="center" animationDuration="0ms" [disableRipple]="true">
 
     <mat-tab label="RGB"> 
-      <div fxLayoutAlign="center center">
-        <h1>R: {{colorService.rgb.red}}</h1>
-        <mat-slider #sliderRed [max]="255" (input)="onChangeRedSlider($event)" class="red-slider"></mat-slider>
-        <h1>G: {{colorService.rgb.green}}</h1>
-        <mat-slider #sliderGreen [max]="255" (input)="onChangeGreenSlider($event)"></mat-slider>
-        <h1>B: {{colorService.rgb.blue}}</h1>
-        <mat-slider #sliderBlue [max]="255" (input)="onChangeBlueSlider($event)"></mat-slider>
+      <div fxLayout="column" fxLayoutAlign="center center">
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+          <h1>R</h1>
+          <mat-slider #sliderRed [max]="255" (input)="onChangeRedSlider($event)" class="slide-red"></mat-slider>
+          <h1 class="text-value">{{colorService.rgb.red}}</h1>
+        </div>
+        <div fxLayout="row">
+          <h1>G</h1>
+          <mat-slider #sliderGreen [max]="255" (input)="onChangeGreenSlider($event)" class="slider-green"></mat-slider>
+          <h1 class="text-value">{{colorService.rgb.green}}</h1>
+        </div>
+        <div fxLayout="row">
+          <h1>B</h1>
+          <mat-slider #sliderBlue [max]="255" (input)="onChangeBlueSlider($event)" class="slide-blue"></mat-slider>
+          <h1 class="text-value">{{colorService.rgb.blue}}</h1>
+        </div>
       </div>
     </mat-tab>
 
