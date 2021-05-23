@@ -1,50 +1,39 @@
-.slide-red {
+@mixin slider-color($color) {
   .mat-slider-thumb,
   .mat-slider-thumb-label,
   .mat-slider-track-fill {
-    background-color: red !important;
+    background-color: $color !important;
   }
   .mat-slider-thumb {
-    background-color: red !important;
+    background-color: $color !important;
   }
   .mat-slider-thumb-label {
-    background-color: red !important;
+    background-color: $color !important;
   }
   .mat-slider-track-fill {
-    background-color: red !important;
+    background-color: $color !important;
   }
 }
 
+.slider-red {
+  @include slider-color(red);
+}
 .slider-green {
-  .mat-slider-thumb,
-  .mat-slider-thumb-label,
-  .mat-slider-track-fill {
-    background-color: green !important;
-  }
-  .mat-slider-thumb {
-    background-color: green !important;
-  }
-  .mat-slider-thumb-label {
-    background-color: green !important;
-  }
-  .mat-slider-track-fill {
-    background-color: green !important;
-  }
+  @include slider-color(green);
+}
+.slider-blue {
+  @include slider-color(blue);
 }
 
-.slide-blue {
-  .mat-slider-thumb,
-  .mat-slider-thumb-label,
-  .mat-slider-track-fill {
-    background-color: blue !important;
-  }
-  .mat-slider-thumb {
-    background-color: blue !important;
-  }
-  .mat-slider-thumb-label {
-    background-color: blue !important;
-  }
-  .mat-slider-track-fill {
-    background-color: blue !important;
-  }
+.slider-cyan {
+  @include slider-color(cyan);
+}
+.slider-magenta {
+  @include slider-color(magenta);
+}
+.slider-yellow {
+  @include slider-color(yellow);
+}
+.slider-keyPlate {
+  @include slider-color(black);
 }
