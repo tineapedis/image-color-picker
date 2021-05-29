@@ -50,17 +50,17 @@
         </div>
         <div fxLayout="row" fxLayoutAlign="space-around center">
           <p class="font-medium-size">M</p>
-          <mat-slider #sliderMagenta [max]="100" [step]="1" (input)="onChangeCyanSlider($event)" class="slider-magenta"></mat-slider>
+          <mat-slider #sliderMagenta [max]="100" [step]="1" (input)="onChangeMagentaSlider($event)" class="slider-magenta"></mat-slider>
           <p class="text-value font-medium-size">{{colorService.cmykNatural.magenta}}</p>
         </div>
         <div fxLayout="row" fxLayoutAlign="space-around center">
           <p class="font-medium-size">Y</p>
-          <mat-slider #sliderYellow [max]="100" [step]="1" (input)="onChangeCyanSlider($event)" class="slider-yellow"></mat-slider>
+          <mat-slider #sliderYellow [max]="100" [step]="1" (input)="onChangeYellowSlider($event)" class="slider-yellow"></mat-slider>
           <p class="text-value font-medium-size">{{colorService.cmykNatural.yellow}}</p>
         </div>
         <div fxLayout="row" fxLayoutAlign="space-around center">
           <p class="font-medium-size">K</p>
-          <mat-slider #sliderKeyPlate [max]="100" [step]="1" (input)="onChangeCyanSlider($event)" class="slider-keyPlate"></mat-slider>
+          <mat-slider #sliderKeyPlate [max]="100" [step]="1" (input)="onChangeKeyPlateSlider($event)" class="slider-keyPlate"></mat-slider>
           <p class="text-value font-medium-size">{{colorService.cmykNatural.keyPlate}}</p>
         </div>
       </div>

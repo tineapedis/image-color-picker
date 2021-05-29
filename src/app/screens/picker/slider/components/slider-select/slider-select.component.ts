@@ -52,5 +52,19 @@ export class SliderSelectComponent implements OnInit, AfterViewInit {
     this.colorService.updateBlue(event.value);
   }
 
-  onChangeCyanSlider(event: any) {}
+  onChangeCyanSlider(event: any) {
+    this.colorService.updateCyan(event.value);
+  }
+
+  onChangeMagentaSlider(event: any) {
+    this.colorService.updateMagenta(event.value);
+  }
+
+  onChangeYellowSlider(event: any) {
+    this.colorService.updateYellow(event.value);
+  }
+
+  onChangeKeyPlateSlider(event: any) {
+    this.colorService.updateKeyPlate(event.value);
+  }
 }

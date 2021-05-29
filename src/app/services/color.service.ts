@@ -40,6 +40,8 @@ export class ColorService implements Color {
     this.rgbObserver$ = this.rgbSubject.asObservable();
   }
 
+  /// Update
+
   updateRed(red: number) {
     this.rgb.red = red;
     this.updateRGB(this.rgb);
@@ -52,6 +54,34 @@ export class ColorService implements Color {
 
   updateBlue(blue: number) {
     this.rgb.blue = blue;
+    this.updateRGB(this.rgb);
+  }
+
+  updateCyan(cyan: number) {
+    this.cmyk.cyan = cyan / 100;
+    this.cmy = this.convertCmykToCmy(this.cmyk);
+    this.rgb = this.convertCmyToRgb(this.cmy);
+    this.updateRGB(this.rgb);
+  }
+
+  updateMagenta(magenta: number) {
+    this.cmyk.magenta = magenta / 100;
+    this.cmy = this.convertCmykToCmy(this.cmyk);
+    this.rgb = this.convertCmyToRgb(this.cmy);
+    this.updateRGB(this.rgb);
+  }
+
+  updateYellow(yellow: number) {
+    this.cmyk.yellow = yellow / 100;
+    this.cmy = this.convertCmykToCmy(this.cmyk);
+    this.rgb = this.convertCmyToRgb(this.cmy);
+    this.updateRGB(this.rgb);
+  }
+
+  updateKeyPlate(keyPlate: number) {
+    this.cmyk.keyPlate = keyPlate / 100;
+    this.cmy = this.convertCmykToCmy(this.cmyk);
+    this.rgb = this.convertCmyToRgb(this.cmy);
     this.updateRGB(this.rgb);
   }
 
@@ -124,9 +154,33 @@ export class ColorService implements Color {
   convertCmykToCmykNatural(cmyk: CMYK): CMYK {
     return {
       cyan: Math.round(cmyk.cyan * 100),
-      magenta: Math.round(cmyk.yellow * 100),
+      magenta: Math.round(cmyk.magenta * 100),
       yellow: Math.round(cmyk.yellow * 100),
       keyPlate: Math.round(cmyk.keyPlate * 100),
+    };
+  }
+
+  convertCmykToCmy(cmyk: CMYK): CMY {
+    const cmyArray = [cmyk.cyan, cmyk.magenta, cmyk.yellow].map(
+      (value) => value * (1 - cmyk.keyPlate) + cmyk.keyPlate
+    );
+
+    return {
+      cyan: cmyArray[0],
+      magenta: cmyArray[1],
+      yellow: cmyArray[2],
+    };
+  }
+
+  convertCmyToRgb(cmy: CMY): RGB {
+    const rgbArray = [cmy.cyan, cmy.magenta, cmy.yellow].map((value) =>
+      Math.round((1 - value) * 255)
+    );
+
+    return {
+      red: rgbArray[0],
+      green: rgbArray[1],
+      blue: rgbArray[2],
     };
   }
 }
