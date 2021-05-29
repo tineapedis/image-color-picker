@@ -23,13 +23,7 @@ export class SliderSelectComponent implements OnInit, AfterViewInit {
     this.colorService = colorService;
   }
 
-  ngOnInit() {
-    // this.subscription = this.colorService.rgbObserver$.subscribe(
-    //   (rgb) => {
-    //     this.sliderRed.value = rgb.red
-    //   }
-    // );
-  }
+  ngOnInit() {}
 
   ngAfterViewInit() {
     this.sliderRed.value = this.colorService.rgb.red;
@@ -40,6 +34,12 @@ export class SliderSelectComponent implements OnInit, AfterViewInit {
     this.sliderMagenta.value = this.colorService.cmykNatural.magenta;
     this.sliderYellow.value = this.colorService.cmykNatural.yellow;
     this.sliderKeyPlate.value = this.colorService.cmykNatural.keyPlate;
+
+    this.subscription = this.colorService.rgbObserver$.subscribe((rgb) => {
+      this.sliderRed.value = rgb.red;
+      this.sliderGreen.value = rgb.green;
+      this.sliderBlue.value = rgb.blue;
+    });
   }
 
   onChangeRedSlider(event: any) {
