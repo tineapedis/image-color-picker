@@ -7,7 +7,7 @@
     <button mat-stroked-button class="color-button" (click)=onClickHexButton()>
       HEX: {{ colorService.colorCode.hex }}
     </button>
-    <button mat-stroked-button class="color-button">
+    <button mat-stroked-button class="color-button" (click)=onClickCmykButton()>
       CMYK: {{ colorService.colorCode.cmyk }}
     </button>
     <div class="color-display" id="selected-color-display"></div>

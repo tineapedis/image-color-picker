@@ -69,6 +69,11 @@ export class PickedColorComponent implements OnInit {
     this.copyTextToClipboard(this.colorService.colorCode.hex);
   }
 
+  onClickCmykButton() {
+    this.showSnackBar(`CMYK: ${this.colorService.colorCode.cmyk}`);
+    this.copyTextToClipboard(this.colorService.colorCode.cmyk);
+  }
+
   private showSnackBar(text: string) {
     this.snackBar.open('Copy！', text, {
       duration: 2000,
