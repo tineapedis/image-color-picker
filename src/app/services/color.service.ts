@@ -32,7 +32,7 @@ export class ColorService implements Color {
   colorCode: ColorCode = {
     rgb: this.rgbColorCode(),
     hex: this.hexColorCode(),
-    cmyk: this.cmykColorCode(),
+    cmyk: this.hexColorCode(),
   };
   private rgbSubject = new BehaviorSubject<RGB>(this.rgb);
 
@@ -63,6 +63,7 @@ export class ColorService implements Color {
     this.cmy = this.convertRgbToCmy(rgb);
     this.cmyk = this.converCmyToCmyk(this.cmy);
     this.cmykNatural = this.convertCmykToCmykNatural(this.cmyk);
+    this.colorCode.cmyk = `${this.cmykNatural.cyan} ${this.cmykNatural.magenta} ${this.cmykNatural.yellow} ${this.cmykNatural.keyPlate}`;
   }
 
   /// ColorCode

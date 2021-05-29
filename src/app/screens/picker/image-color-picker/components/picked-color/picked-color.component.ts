@@ -18,6 +18,7 @@ export class PickedColorComponent implements OnInit {
   pointerHEX = '#FFFFFF';
   pointerCMYK = '0 0 0 0';
   colorService: ColorService;
+  isFirst = true;
 
   constructor(private snackBar: MatSnackBar, colorService: ColorService) {
     this.colorService = colorService;
@@ -26,6 +27,12 @@ export class PickedColorComponent implements OnInit {
   ngOnInit(): void {}
 
   @Input() set setSelectedRGB(value: string) {
+    // FIXME: かっこ悪すぎるので良いチェック方法へ修正
+    if (this.isFirst) {
+      this.isFirst = false;
+      return;
+    }
+
     this.colorService.updateRGB(this.rgb);
 
     const selectedColorDisplay = document.getElementById(
