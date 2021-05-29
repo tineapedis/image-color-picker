@@ -27,4 +27,5 @@ type CMYK = {
 type ColorCode = {
   rgb: string;
   hex: string;
+  cmyk: string;
 };

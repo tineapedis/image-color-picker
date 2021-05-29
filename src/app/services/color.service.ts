@@ -13,19 +13,26 @@ export class ColorService implements Color {
     blue: 255,
   };
   cmy: CMY = {
-    cyan: 1,
-    magenta: 1,
-    yellow: 1,
+    cyan: 0,
+    magenta: 0,
+    yellow: 0,
   };
   cmyk: CMYK = {
-    cyan: 1,
-    magenta: 1,
-    yellow: 1,
-    keyPlate: 1,
+    cyan: 0,
+    magenta: 0,
+    yellow: 0,
+    keyPlate: 0,
+  };
+  cmykNatural: CMYK = {
+    cyan: 0,
+    magenta: 0,
+    yellow: 0,
+    keyPlate: 0,
   };
   colorCode: ColorCode = {
     rgb: this.rgbColorCode(),
     hex: this.hexColorCode(),
+    cmyk: this.cmykColorCode(),
   };
   private rgbSubject = new BehaviorSubject<RGB>(this.rgb);
 
@@ -55,6 +62,7 @@ export class ColorService implements Color {
     this.colorCode.hex = this.convertRgbToHex(rgb);
     this.cmy = this.convertRgbToCmy(rgb);
     this.cmyk = this.converCmyToCmyk(this.cmy);
+    this.cmykNatural = this.convertCmykToCmykNatural(this.cmyk);
   }
 
   /// ColorCode
@@ -65,6 +73,10 @@ export class ColorService implements Color {
 
   hexColorCode(): string {
     return this.convertRgbToHex(this.rgb);
+  }
+
+  cmykColorCode(): string {
+    return this.convertRgbToCmykCode(this.rgb);
   }
 
   /// converter
@@ -88,6 +100,13 @@ export class ColorService implements Color {
     };
   }
 
+  convertRgbToCmykCode(rgb: RGB): string {
+    const cmy = this.convertRgbToCmy(rgb);
+    const cmyk = this.converCmyToCmyk(cmy);
+    const cmykN = this.convertCmykToCmykNatural(cmyk);
+    return `${cmykN.cyan} ${cmykN.magenta} ${cmykN.yellow} ${cmykN.keyPlate}`;
+  }
+
   converCmyToCmyk(cmy: CMY): CMYK {
     const cmyArray = [cmy.cyan, cmy.magenta, cmy.yellow];
     const k = Math.min.apply(0, cmyArray);
@@ -98,6 +117,15 @@ export class ColorService implements Color {
       magenta: cmyk[1],
       yellow: cmyk[2],
       keyPlate: k,
+    };
+  }
+
+  convertCmykToCmykNatural(cmyk: CMYK): CMYK {
+    return {
+      cyan: Math.round(cmyk.cyan * 100),
+      magenta: Math.round(cmyk.yellow * 100),
+      yellow: Math.round(cmyk.yellow * 100),
+      keyPlate: Math.round(cmyk.keyPlate * 100),
     };
   }
 }

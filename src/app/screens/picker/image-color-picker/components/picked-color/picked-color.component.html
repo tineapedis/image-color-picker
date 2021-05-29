@@ -7,7 +7,9 @@
     <button mat-stroked-button class="color-button" (click)=onClickHexButton()>
       HEX: {{ colorService.colorCode.hex }}
     </button>
-    <button mat-stroked-button class="color-button">CMYK: 0 0 0 0</button>
+    <button mat-stroked-button class="color-button">
+      CMYK: {{ colorService.colorCode.cmyk }}
+    </button>
     <div class="color-display" id="selected-color-display"></div>
   </mat-card-content>
 
@@ -15,7 +17,7 @@
     <p class="title">Current Point</p>
     <button mat-stroked-button>{{ pointerRGB }}</button>
     <button mat-stroked-button class="color-button">{{ pointerHEX }}</button>
-    <button mat-stroked-button class="color-button">0 0 0 0</button>
+    <button mat-stroked-button class="color-button">{{ pointerCMYK }}</button>
     <div class="color-display" id="picker-color-display"></div>
   </mat-card-content>
 </mat-card>

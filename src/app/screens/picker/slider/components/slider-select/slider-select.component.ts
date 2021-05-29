@@ -36,10 +36,10 @@ export class SliderSelectComponent implements OnInit, AfterViewInit {
     this.sliderGreen.value = this.colorService.rgb.green;
     this.sliderBlue.value = this.colorService.rgb.blue;
 
-    this.sliderCyan.value = this.colorService.cmyk.cyan;
-    this.sliderMagenta.value = this.colorService.cmyk.magenta;
-    this.sliderYellow.value = this.colorService.cmyk.yellow;
-    this.sliderKeyPlate.value = this.colorService.cmyk.keyPlate;
+    this.sliderCyan.value = this.colorService.cmykNatural.cyan;
+    this.sliderMagenta.value = this.colorService.cmykNatural.magenta;
+    this.sliderYellow.value = this.colorService.cmykNatural.yellow;
+    this.sliderKeyPlate.value = this.colorService.cmykNatural.keyPlate;
   }
 
   onChangeRedSlider(event: any) {

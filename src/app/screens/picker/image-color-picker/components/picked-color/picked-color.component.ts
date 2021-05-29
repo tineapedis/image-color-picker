@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Input } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ColorService } from 'src/app/services/color.service';
+import { ColorService } from '../../../../../services/color.service';
 
 @Component({
   selector: 'app-picked-color',
@@ -9,8 +9,14 @@ import { ColorService } from 'src/app/services/color.service';
   styleUrls: ['./picked-color.component.scss'],
 })
 export class PickedColorComponent implements OnInit {
+  rgb: RGB = {
+    red: 255,
+    green: 255,
+    blue: 255,
+  };
   pointerRGB = '255 255 255';
   pointerHEX = '#FFFFFF';
+  pointerCMYK = '0 0 0 0';
   colorService: ColorService;
 
   constructor(private snackBar: MatSnackBar, colorService: ColorService) {
@@ -20,13 +26,7 @@ export class PickedColorComponent implements OnInit {
   ngOnInit(): void {}
 
   @Input() set setSelectedRGB(value: string) {
-    const rgbArray = value.split(' ');
-
-    this.colorService.updateRGB({
-      red: Number(rgbArray[0]),
-      green: Number(rgbArray[1]),
-      blue: Number(rgbArray[2]),
-    });
+    this.colorService.updateRGB(this.rgb);
 
     const selectedColorDisplay = document.getElementById(
       'selected-color-display'
@@ -39,32 +39,18 @@ export class PickedColorComponent implements OnInit {
   @Input() set setPointerRGB(value: string) {
     this.pointerRGB = value;
     const rgbArray = value.split(' ');
-    this.pointerHEX = this.convertRgbToHex(
-      rgbArray[0],
-      rgbArray[1],
-      rgbArray[2]
-    );
+    this.rgb = {
+      red: Number(rgbArray[0]),
+      green: Number(rgbArray[1]),
+      blue: Number(rgbArray[2]),
+    };
+    this.pointerHEX = this.colorService.convertRgbToHex(this.rgb);
+    this.pointerCMYK = this.colorService.convertRgbToCmykCode(this.rgb);
     const pickerColorDisplay = document.getElementById('picker-color-display');
     if (pickerColorDisplay) {
       pickerColorDisplay.style.backgroundColor = this.pointerHEX;
     }
   }
-
-  // TODO: 以下メソッド別ファイルに移植する -----------------------
-  convertRgbToHex(red: string, green: string, blue: string) {
-    return (
-      '#' +
-      this.toHex(Number(red)) +
-      this.toHex(Number(green)) +
-      this.toHex(Number(blue))
-    );
-  }
-
-  toHex(color: number) {
-    const hex = color.toString(16);
-    return hex.length === 1 ? '0' + hex : hex;
-  }
-  // ---------------------------------------------------------
 
   onClickRgbButton() {
     this.showSnackBar(`RGB: ${this.colorService.colorCode.rgb}`);
