@@ -5,5 +5,6 @@ import { ColorCodeListComponent } from './components/color-code-list/color-code-
 @NgModule({
   declarations: [ColorCodeListComponent],
   imports: [CommonModule],
+  exports: [ColorCodeListComponent],
 })
-export class SharedModule {}
+export class SharedComponentModule {}
