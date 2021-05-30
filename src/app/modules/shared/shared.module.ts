@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ColorCodeListComponent } from './components/color-code-list/color-code-list.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [ColorCodeListComponent],
   imports: [CommonModule],
 })
 export class SharedModule {}
