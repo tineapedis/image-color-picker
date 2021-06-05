@@ -14,7 +14,7 @@ export class CommonService {
     name: 'Color Information',
     tools: [
       { name: 'Simple', caption: 'simple caption', url: '' },
-      { name: 'Detail', caption: 'detail caption', url: '' },
+      // { name: 'Detail', caption: 'detail caption', url: '' },
     ],
   };
   private pickerToolBox: ToolBox = {

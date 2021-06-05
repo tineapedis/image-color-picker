@@ -1,5 +1,11 @@
 <div fxLayout="column">
-  <div fxlayout="row" fxLayoutAlign="center center">
-    <app-slider-select fxFlex="95"></app-slider-select>
+  <div fxlayout="row" fxLayoutAlign="space-around center">
+    <app-slider-select fxFlex="60"></app-slider-select>
+    <mat-card id="card-color" fxFlex="35">
+      {{colorService.colorCode.hex}}
+    </mat-card>
+  </div>
+  <div class="app-color-code-list" fxLayoutAlign="center">
+    <app-color-code-list fxFlex="97"></app-color-code-list>
   </div>
 </div>

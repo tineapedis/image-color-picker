@@ -45,23 +45,23 @@
       <div fxLayout="column" fxLayoutAlign="center center">
         <div fxLayout="row" fxLayoutAlign="space-around center">
           <p class="font-medium-size">C</p>
-          <mat-slider #sliderRed [max]="255" (input)="onChangeRedSlider($event)" class="slider-cyan"></mat-slider>
-          <p class="text-value font-medium-size">{{colorService.rgb.red}}</p>
+          <mat-slider #sliderCyan [max]="100" [step]="1" (input)="onChangeCyanSlider($event)" class="slider-cyan"></mat-slider>
+          <p class="text-value font-medium-size">{{colorService.cmykNatural.cyan}}</p>
         </div>
         <div fxLayout="row" fxLayoutAlign="space-around center">
           <p class="font-medium-size">M</p>
-          <mat-slider #sliderGreen [max]="255" (input)="onChangeGreenSlider($event)" class="slider-magenta"></mat-slider>
-          <p class="text-value font-medium-size">{{colorService.rgb.green}}</p>
+          <mat-slider #sliderMagenta [max]="100" [step]="1" (input)="onChangeMagentaSlider($event)" class="slider-magenta"></mat-slider>
+          <p class="text-value font-medium-size">{{colorService.cmykNatural.magenta}}</p>
         </div>
         <div fxLayout="row" fxLayoutAlign="space-around center">
           <p class="font-medium-size">Y</p>
-          <mat-slider #sliderBlue [max]="255" (input)="onChangeBlueSlider($event)" class="slider-yellow"></mat-slider>
-          <p class="text-value font-medium-size">{{colorService.rgb.blue}}</p>
+          <mat-slider #sliderYellow [max]="100" [step]="1" (input)="onChangeYellowSlider($event)" class="slider-yellow"></mat-slider>
+          <p class="text-value font-medium-size">{{colorService.cmykNatural.yellow}}</p>
         </div>
         <div fxLayout="row" fxLayoutAlign="space-around center">
           <p class="font-medium-size">K</p>
-          <mat-slider #sliderBlue [max]="255" (input)="onChangeBlueSlider($event)" class="slider-keyPlate"></mat-slider>
-          <p class="text-value font-medium-size">{{colorService.rgb.blue}}</p>
+          <mat-slider #sliderKeyPlate [max]="100" [step]="1" (input)="onChangeKeyPlateSlider($event)" class="slider-keyPlate"></mat-slider>
+          <p class="text-value font-medium-size">{{colorService.cmykNatural.keyPlate}}</p>
         </div>
       </div>
     </mat-tab>
