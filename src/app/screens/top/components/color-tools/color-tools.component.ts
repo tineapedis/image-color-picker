@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonService } from 'src/app/services/common.service';
 import { Router } from '@angular/router';
 
@@ -7,12 +7,10 @@ import { Router } from '@angular/router';
   templateUrl: './color-tools.component.html',
   styleUrls: ['./color-tools.component.scss'],
 })
-export class ColorToolsComponent implements OnInit {
+export class ColorToolsComponent {
   toolBoxes = this.commonService.toolBoxes;
 
   constructor(private commonService: CommonService, private router: Router) {}
-
-  ngOnInit(): void {}
 
   navigateTo(urlText: string | undefined) {
     if (urlText === undefined) {

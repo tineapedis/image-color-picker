@@ -9,7 +9,6 @@ import { SimpleComponent } from './simple/simple.component';
 const routes: Routes = [{ path: 'simple', component: SimpleComponent }];
 
 @NgModule({
-  // declarations: [SimpleComponent],
   imports: [
     RouterModule.forChild(routes),
     CommonModule,
