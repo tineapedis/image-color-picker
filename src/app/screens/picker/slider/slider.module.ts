@@ -6,6 +6,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { SliderComponent } from './components/slider/slider.component';
 import { SliderSelectComponent } from './components/slider-select/slider-select.component';
 import { SharedComponentModule } from '../../../modules/shared/shared-component.module';
+import { NotificationService } from '../../../services/notification.service';
 
 const routes: Routes = [{ path: '', component: SliderComponent }];
 
