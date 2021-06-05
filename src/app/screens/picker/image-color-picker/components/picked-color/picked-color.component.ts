@@ -80,6 +80,7 @@ export class PickedColorComponent implements OnInit {
     });
   }
 
+  // TODO: 何かしらのServiceに持たせる
   private copyTextToClipboard(text: string) {
     // テキストエリアを用意する
     const copyFrom = document.createElement('textarea');

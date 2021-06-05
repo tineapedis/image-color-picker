@@ -1,13 +1,13 @@
 <mat-card>
   Color Code
   <div fxLayout="row wrap" fxLayoutAlign="space-around center">
-    <button mat-stroked-button class="button-color-code">
+    <button mat-stroked-button class="button-color-code" (click)=onClickColorCodeButton(colorService.colorCode.rgb)>
       <p class="font-xsmall-size">RGB: {{colorService.colorCode.rgb}}</p>
     </button>
-    <button mat-stroked-button class="button-color-code">
+    <button mat-stroked-button class="button-color-code" (click)=onClickColorCodeButton(colorService.colorCode.hex)>
       <p class="font-xsmall-size">HEX: {{colorService.colorCode.hex}}</p>
     </button>
-    <button mat-stroked-button class="button-color-code">
+    <button mat-stroked-button class="button-color-code" (click)=onClickColorCodeButton(colorService.colorCode.cmyk)>
       <p class="font-xsmall-size">CMYK: {{colorService.colorCode.cmyk}}</p>
     </button>
   </div>
