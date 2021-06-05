@@ -21,6 +21,13 @@ const routes: Routes = [
         (m) => m.SliderModule
       ),
   },
+  {
+    path: 'information',
+    loadChildren: () =>
+      import('../screens/information/information.module').then(
+        (m) => m.InformationModule
+      ),
+  },
 ];
 
 @NgModule({
