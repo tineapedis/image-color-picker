@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ColorService } from 'src/app/services/color.service';
 
 @Component({
   selector: 'app-color-code-list',
@@ -6,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./color-code-list.component.scss'],
 })
 export class ColorCodeListComponent implements OnInit {
-  constructor() {}
+  colorService: ColorService;
 
-  ngOnInit(): void {}
+  constructor(colorService: ColorService) {
+    this.colorService = colorService;
+  }
+
+  ngOnInit() {}
 }

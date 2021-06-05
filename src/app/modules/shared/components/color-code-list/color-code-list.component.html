@@ -1,1 +1,14 @@
-<p>color-code-list works!</p>
+<mat-card>
+  Color Code
+  <div fxLayout="row wrap" fxLayoutAlign="space-around center">
+    <button mat-stroked-button class="button-color-code">
+      <p class="font-xsmall-size">RGB: {{colorService.colorCode.rgb}}</p>
+    </button>
+    <button mat-stroked-button class="button-color-code">
+      <p class="font-xsmall-size">HEX: {{colorService.colorCode.hex}}</p>
+    </button>
+    <button mat-stroked-button class="button-color-code">
+      <p class="font-xsmall-size">CMYK: {{colorService.colorCode.cmyk}}</p>
+    </button>
+  </div>
+</mat-card>

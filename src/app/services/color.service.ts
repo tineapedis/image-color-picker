@@ -32,7 +32,7 @@ export class ColorService implements Color {
   colorCode: ColorCode = {
     rgb: this.rgbColorCode(),
     hex: this.hexColorCode(),
-    cmyk: this.hexColorCode(),
+    cmyk: this.cmykColorCode(),
   };
   private rgbSubject = new BehaviorSubject<RGB>(this.rgb);
 

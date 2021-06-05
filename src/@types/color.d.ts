@@ -29,3 +29,8 @@ type ColorCode = {
   hex: string;
   cmyk: string;
 };
+
+type ColorType = {
+  name: string;
+  colorCode: string;
+};
