@@ -20,7 +20,10 @@ export class SimpleComponent implements OnInit {
     const hex = this.colorService.hexColorCode().replace('#', '');
     this.colorNameService.fetchColorName(hex).subscribe(
       (res) => {
-        // alert(res.colors[0].name)
+        const textColorName = document.getElementById('text-color-name');
+        if (textColorName) {
+          textColorName.textContent = res.colors[0].name;
+        }
       },
       (err) => {
         alert(err.status);
@@ -29,20 +32,12 @@ export class SimpleComponent implements OnInit {
       }
     );
 
-    // this.setUpCardColor()
-
-    const cardColor = document.getElementById('card-color');
-    this.subscription = this.colorService.rgbObserver$.subscribe((rgb) => {
-      if (cardColor) {
-        cardColor.style.backgroundColor = this.colorService.hexColorCode();
-      }
-    });
+    this.setUpCardColor();
   }
 
-  setUpCardColor() {
+  private setUpCardColor() {
     const cardColor = document.getElementById('card-color');
     if (cardColor) {
-      alert(this.colorService.hexColorCode());
       cardColor.style.backgroundColor = this.colorService.hexColorCode();
     }
   }
