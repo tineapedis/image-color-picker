@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -21,5 +21,6 @@ const routes: Routes = [{ path: 'simple', component: SimpleComponent }];
     SharedComponentModule,
   ],
   providers: [ColorNameService],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class InformationModule {}
