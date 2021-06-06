@@ -5,7 +5,12 @@
             <mat-icon>first_page</mat-icon>
         </ng-template>
     </button>
-    <span>Color App</span>
+    <a href="/">
+        <img src="assets/images/title-logo.png" class="image-title" *ngIf="isLight; else showDarkModeLogo">
+        <ng-template #showDarkModeLogo>
+            <img src="assets/images/title-logo-white.png" class="image-title">
+        </ng-template>
+    </a>
     <span id="spacer"></span>
     <button mat-icon-button (click)="onClickThemeToggleButton()">
         <mat-icon *ngIf="isLight; else showDarkModeIcon">light_mode</mat-icon>

@@ -112,7 +112,7 @@ export class ColorService implements Color {
 
   /// converter
 
-  convertRgbToHex(rgb: RGB) {
+  convertRgbToHex(rgb: RGB): string {
     return (
       '#' + this.to16(rgb.red) + this.to16(rgb.green) + this.to16(rgb.blue)
     );

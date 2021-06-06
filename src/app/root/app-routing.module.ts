@@ -7,6 +7,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('../screens/top/top.module').then((m) => m.TopModule),
   },
+  // FIXME: image-color-pickerとsliderをpicker配下にまとめる
   {
     path: 'image-color-picker',
     loadChildren: () =>
@@ -19,6 +20,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('../screens/picker/slider/slider.module').then(
         (m) => m.SliderModule
+      ),
+  },
+  {
+    path: 'information',
+    loadChildren: () =>
+      import('../screens/information/information.module').then(
+        (m) => m.InformationModule
       ),
   },
 ];
