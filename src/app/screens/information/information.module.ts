@@ -7,6 +7,8 @@ import { SharedComponentModule } from '../../modules/shared/shared-component.mod
 
 import { SimpleComponent } from './simple/simple.component';
 
+import { ColorNameService } from '../../services/network/color-name.service';
+
 const routes: Routes = [{ path: 'simple', component: SimpleComponent }];
 
 @NgModule({
@@ -18,5 +20,6 @@ const routes: Routes = [{ path: 'simple', component: SimpleComponent }];
     MaterialModule,
     SharedComponentModule,
   ],
+  providers: [ColorNameService],
 })
 export class InformationModule {}
