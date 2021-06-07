@@ -16,12 +16,10 @@ export class SliderComponent implements OnInit {
   }
 
   ngOnInit() {
-    const cardColor = document.getElementById('card-color');
-    this.subscription = this.colorService.rgbObserver$.subscribe((rgb) => {
+    const cardColor = document.getElementById('card-color-in-slider');
+    this.subscription = this.colorService.rgbObserver$.subscribe(() => {
       if (cardColor) {
-        cardColor.style.backgroundColor = this.colorService.convertRgbToHex(
-          rgb
-        );
+        cardColor.style.backgroundColor = this.colorService.hexColorCode();
       }
     });
   }
