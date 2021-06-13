@@ -10,12 +10,15 @@ import 'vanilla-colorful';
   styleUrls: ['./simple.component.scss'],
 })
 export class SimpleComponent implements OnInit {
+  colorService: ColorService;
   private subscription!: Subscription;
 
   constructor(
     private colorNameService: ColorNameService,
-    private colorService: ColorService
-  ) {}
+    colorService: ColorService
+  ) {
+    this.colorService = colorService;
+  }
 
   ngOnInit() {
     const hex = this.colorService.hexColorCode().replace('#', '');
