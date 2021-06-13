@@ -13,7 +13,12 @@ export class CommonService {
   private informationBox: ToolBox = {
     name: 'Color Information',
     tools: [
-      { name: 'Simple', caption: 'simple caption', url: '/information/simple' },
+      {
+        name: 'Simple',
+        caption:
+          'In addition to the color code, it provides simple information such as the color name.',
+        url: '/information/simple',
+      },
       // { name: 'Detail', caption: 'detail caption', url: '' },
     ],
   };
