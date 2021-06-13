@@ -90,10 +90,22 @@ export class ColorService implements Color {
     this.rgbSubject.next(rgb);
     this.colorCode.rgb = this.rgbColorCode();
     this.colorCode.hex = this.convertRgbToHex(rgb);
+    this.updateCMYK(rgb);
+  }
+
+  updateCMYK(rgb: RGB) {
     this.cmy = this.convertRgbToCmy(rgb);
     this.cmyk = this.converCmyToCmyk(this.cmy);
     this.cmykNatural = this.convertCmykToCmykNatural(this.cmyk);
     this.colorCode.cmyk = `${this.cmykNatural.cyan} ${this.cmykNatural.magenta} ${this.cmykNatural.yellow} ${this.cmykNatural.keyPlate}`;
+  }
+
+  updateHex(hex: string) {
+    this.colorCode.hex = hex;
+    this.rgb = this.convertHexToRgb(hex);
+    this.rgbSubject.next(this.rgb);
+    this.colorCode.rgb = this.rgbColorCode();
+    this.updateCMYK(this.rgb);
   }
 
   /// ColorCode
@@ -121,6 +133,30 @@ export class ColorService implements Color {
   to16(color: number) {
     const hex = color.toString(16);
     return hex.length === 1 ? '0' + hex : hex;
+  }
+
+  convertHexToRgb(hex: string): RGB {
+    // TODO: 文字数３の場合もあると思われる
+    const rgbList = hex.replace('#', '').match(/.{2}/g);
+    if (rgbList == null) {
+      return {
+        red: 0,
+        green: 0,
+        blue: 0,
+      };
+    }
+    const r = this.to10(rgbList[0]);
+    const g = this.to10(rgbList[1]);
+    const b = this.to10(rgbList[2]);
+    return {
+      red: r,
+      green: g,
+      blue: b,
+    };
+  }
+
+  to10(hex: string): number {
+    return parseInt(hex, 16);
   }
 
   convertRgbToCmy(rgb: RGB): CMY {
