@@ -22,7 +22,7 @@ export class CommonService {
     tools: [
       {
         name: 'Slider',
-        caption: 'Slider Caption',
+        caption: 'Adjust the RGB or CMYK slider to get the color.',
         url: '/slider',
       },
       // {
