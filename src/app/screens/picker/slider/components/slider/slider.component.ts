@@ -17,8 +17,10 @@ export class SliderComponent implements OnInit {
 
   ngOnInit() {
     const cardColor = document.getElementById('card-color-in-slider');
+    const textHex = document.getElementById('text-hex');
     this.subscription = this.colorService.rgbObserver$.subscribe(() => {
-      if (cardColor) {
+      if (cardColor && textHex) {
+        textHex.style.color = this.colorService.getBlackWhite();
         cardColor.style.backgroundColor = this.colorService.hexColorCode();
       }
     });

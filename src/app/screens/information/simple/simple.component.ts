@@ -27,6 +27,7 @@ export class SimpleComponent implements OnInit {
         const textColorName = document.getElementById('text-color-name');
         if (textColorName) {
           textColorName.textContent = res.colors[0].name;
+          textColorName.style.color = this.colorService.getBlackWhite();
         }
       },
       (err) => {
