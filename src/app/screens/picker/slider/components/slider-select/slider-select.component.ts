@@ -1,4 +1,10 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  ViewChild,
+  OnDestroy,
+} from '@angular/core';
 import { MatSlider } from '@angular/material/slider';
 import { Subscription } from 'rxjs';
 import { ColorService } from 'src/app/services/color.service';
@@ -8,7 +14,7 @@ import { ColorService } from 'src/app/services/color.service';
   templateUrl: './slider-select.component.html',
   styleUrls: ['./slider-select.component.scss'],
 })
-export class SliderSelectComponent implements OnInit, AfterViewInit {
+export class SliderSelectComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('sliderRed') sliderRed!: MatSlider;
   @ViewChild('sliderGreen') sliderGreen!: MatSlider;
   @ViewChild('sliderBlue') sliderBlue!: MatSlider;
@@ -26,20 +32,19 @@ export class SliderSelectComponent implements OnInit, AfterViewInit {
   ngOnInit() {}
 
   ngAfterViewInit() {
-    this.sliderRed.value = this.colorService.rgb.red;
-    this.sliderGreen.value = this.colorService.rgb.green;
-    this.sliderBlue.value = this.colorService.rgb.blue;
-
-    this.sliderCyan.value = this.colorService.cmykNatural.cyan;
-    this.sliderMagenta.value = this.colorService.cmykNatural.magenta;
-    this.sliderYellow.value = this.colorService.cmykNatural.yellow;
-    this.sliderKeyPlate.value = this.colorService.cmykNatural.keyPlate;
-
     this.subscription = this.colorService.rgbObserver$.subscribe((rgb) => {
       this.sliderRed.value = rgb.red;
       this.sliderGreen.value = rgb.green;
       this.sliderBlue.value = rgb.blue;
+      this.sliderCyan.value = this.colorService.cmykNatural.cyan;
+      this.sliderMagenta.value = this.colorService.cmykNatural.magenta;
+      this.sliderYellow.value = this.colorService.cmykNatural.yellow;
+      this.sliderKeyPlate.value = this.colorService.cmykNatural.keyPlate;
     });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   onChangeRedSlider(event: any) {
