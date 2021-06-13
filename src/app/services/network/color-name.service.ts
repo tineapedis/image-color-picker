@@ -18,6 +18,7 @@ interface ColorNameResponse {
   providedIn: 'root',
 })
 export class ColorNameService {
+  // TODO: API叩くのやめたい
   /// https://www.npmjs.com/package/color-name-list/v/4.9.0
   private colorNameUrl = 'https://api.color.pizza/v1/';
   private data: string[] = [];

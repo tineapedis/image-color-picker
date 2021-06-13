@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ColorNameService } from 'src/app/services/network/color-name.service';
 import { ColorService } from 'src/app/services/color.service';
 import { Subscription } from 'rxjs';
+import 'vanilla-colorful';
 
 @Component({
   selector: 'app-simple',
@@ -32,13 +33,21 @@ export class SimpleComponent implements OnInit {
       }
     );
 
-    this.setUpCardColor();
+    const cardColor = document.getElementById('card-color');
+    this.subscription = this.colorService.rgbObserver$.subscribe((rgb) => {
+      if (cardColor) {
+        cardColor.style.backgroundColor = this.colorService.hexColorCode();
+      }
+    });
+
+    this.setUpHexColorPicker();
   }
 
-  private setUpCardColor() {
-    const cardColor = document.getElementById('card-color');
-    if (cardColor) {
-      cardColor.style.backgroundColor = this.colorService.hexColorCode();
-    }
+  private setUpHexColorPicker() {
+    const input = document.querySelector('hex-color-picker');
+    input?.addEventListener('color-changed', (event) => {
+      const newColor = event.detail.value;
+      this.colorService.updateHex(newColor);
+    });
   }
 }
