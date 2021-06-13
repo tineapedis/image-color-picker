@@ -32,7 +32,8 @@ export class CommonService {
       // },
       {
         name: 'Image Color Picker',
-        caption: 'Image Color Picker Caption',
+        caption:
+          'You can specify any part of the image and get the color code.',
         url: '/image-color-picker',
       },
     ],
