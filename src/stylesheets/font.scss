@@ -1,14 +1,23 @@
-$main-font-family: 'Source Sans Pro', sans-serif;
+// $main-font-family: 'Source Sans Pro', sans-serif;
+$main-font-family: 'Noto Sans JP', sans-serif;
 .font-main {
   font-family: $main-font-family;
 }
 
+.font-xxsmall-size {
+  font-size: 10px;
+  font-family: $main-font-family;
+}
 .font-xsmall-size {
-  font-size: 15px;
+  font-size: 12px;
   font-family: $main-font-family;
 }
 .font-small-size {
-  font-size: 20px;
+  font-size: 14px;
+  font-family: $main-font-family;
+}
+.font-normal-size {
+  font-size: 18px;
   font-family: $main-font-family;
 }
 .font-medium-size {

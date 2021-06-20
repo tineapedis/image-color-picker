@@ -1,15 +1,26 @@
 #app-footer {
-  margin-top: 30px;
-  background-color: #3e3d3d;
+  margin-top: 50px;
+  background-color: black;
 }
 
 #container-toolbar {
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 30px;
 }
 
-span {
+.item {
+  width: 100px;
+  color: #fff;
+  display: block;
+  text-align: center;
+}
+
+.container-pages {
+  margin-top: 10px;
+  width: 50%;
+}
+
+#copyright {
+  // margin-top: 10px;
   color: white;
+  margin: 0;
 }
