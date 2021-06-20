@@ -1,5 +1,5 @@
 <mat-toolbar id="app-header" class="dark-theme">
-    <button mat-icon-button (click)="onClickMenuButton()">
+    <button mat-icon-button (click)="onClickMenuButton()" *ngIf="!shouldHideMenu">
         <mat-icon *ngIf="!isDrawerOpened; else showCloseIcon">menu</mat-icon>
         <ng-template #showCloseIcon>
             <mat-icon>first_page</mat-icon>

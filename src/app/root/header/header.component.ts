@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 export class HeaderComponent implements OnInit, OnDestroy {
   isLight = true;
   isDrawerOpened = false;
+  shouldHideMenu = false;
   private subscription!: Subscription;
 
   constructor(private commonService: CommonService) {}
@@ -18,6 +19,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.subscription = this.commonService.isLightObserver$.subscribe(
       (isLight) => {
         this.isLight = isLight;
+      }
+    );
+    this.subscription = this.commonService.shouldHideMenuObserver$.subscribe(
+      (shouldHideMenu) => {
+        this.shouldHideMenu = shouldHideMenu;
       }
     );
   }

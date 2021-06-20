@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonService } from 'src/app/services/common.service';
 
 @Component({
   selector: 'app-contact',
@@ -6,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contact.component.scss'],
 })
 export class ContactComponent implements OnInit {
-  constructor() {}
+  constructor(private commonService: CommonService) {}
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    this.commonService.hideMenu();
+  }
 }
