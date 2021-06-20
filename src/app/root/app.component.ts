@@ -19,6 +19,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('drawer') drawer!: MatDrawer;
   toolBoxes = this.commonService.toolBoxes;
   isLight = true;
+  shouldHideMenu = false;
   colorService: ColorService;
   private subscription!: Subscription;
 
@@ -35,15 +36,11 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
         this.isLight = isLight;
       }
     );
-
-    const circleClor = document.getElementById('circle-color');
-    this.subscription = this.colorService.rgbObserver$.subscribe((rgb) => {
-      if (circleClor) {
-        circleClor.style.backgroundColor = this.colorService.convertRgbToHex(
-          rgb
-        );
+    this.subscription = this.commonService.shouldHideMenuObserver$.subscribe(
+      (shouldHideMenu) => {
+        this.shouldHideMenu = shouldHideMenu;
       }
-    });
+    );
   }
 
   ngOnDestroy() {
@@ -52,5 +49,13 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     this.commonService.setDrawer(this.drawer);
+    const circleClor = document.getElementById('circle-color');
+    this.subscription = this.colorService.rgbObserver$.subscribe((rgb) => {
+      if (circleClor) {
+        circleClor.style.backgroundColor = this.colorService.convertRgbToHex(
+          rgb
+        );
+      }
+    });
   }
 }
