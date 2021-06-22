@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonService } from 'src/app/services/common.service';
 
 @Component({
@@ -6,10 +6,14 @@ import { CommonService } from 'src/app/services/common.service';
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss'],
 })
-export class ContactComponent implements OnInit {
+export class ContactComponent implements OnInit, OnDestroy {
   constructor(private commonService: CommonService) {}
 
   ngOnInit() {
     this.commonService.hideMenu();
+  }
+
+  ngOnDestroy() {
+    this.commonService.showMenu();
   }
 }
