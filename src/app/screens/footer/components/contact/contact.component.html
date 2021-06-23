@@ -19,7 +19,7 @@
 
       <mat-form-field appearance="outline" class="form-field-contact">
         <mat-label>Message</mat-label>
-        <textarea matInput></textarea>
+        <textarea matInput formControlName="message"></textarea>
       </mat-form-field>
 
       <button type="submit" mat-stroked-button class="button-submit" [disabled]="contactForm.status == 'INVALID'">Submit</button>

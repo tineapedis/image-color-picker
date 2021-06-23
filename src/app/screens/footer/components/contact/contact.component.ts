@@ -12,6 +12,7 @@ export class ContactComponent implements OnInit, OnDestroy {
     name: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     title: new FormControl('', [Validators.required]),
+    message: new FormControl('', [Validators.required]),
   });
 
   constructor(private commonService: CommonService) {}
