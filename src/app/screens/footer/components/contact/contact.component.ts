@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonService } from 'src/app/services/common.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
@@ -7,6 +8,10 @@ import { CommonService } from 'src/app/services/common.service';
   styleUrls: ['./contact.component.scss'],
 })
 export class ContactComponent implements OnInit, OnDestroy {
+  contactForm = new FormGroup({
+    name: new FormControl(''),
+  });
+
   constructor(private commonService: CommonService) {}
 
   ngOnInit() {
@@ -15,5 +20,9 @@ export class ContactComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.commonService.showMenu();
+  }
+
+  onSubmitButtonTapped() {
+    alert('test');
   }
 }
