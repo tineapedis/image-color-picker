@@ -9,7 +9,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class ContactComponent implements OnInit, OnDestroy {
   contactForm = new FormGroup({
-    name: new FormControl(''),
+    name: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    title: new FormControl('', [Validators.required]),
   });
 
   constructor(private commonService: CommonService) {}
@@ -23,6 +25,6 @@ export class ContactComponent implements OnInit, OnDestroy {
   }
 
   onSubmitButtonTapped() {
-    alert('test');
+    alert(JSON.stringify(this.contactForm.value));
   }
 }

@@ -4,17 +4,17 @@
     <form class="form-contact" [formGroup]="contactForm" (ngSubmit)="onSubmitButtonTapped()">
       <mat-form-field appearance="outline" class="form-field-contact">
         <mat-label>Name</mat-label>
-        <input matInput>
+        <input matInput formControlName="name">
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="form-field-contact">
         <mat-label>Email</mat-label>
-        <input matInput>
+        <input matInput formControlName="email">
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="form-field-contact">
         <mat-label>Title</mat-label>
-        <input matInput>
+        <input matInput formControlName="title">
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="form-field-contact">
@@ -22,7 +22,7 @@
         <textarea matInput></textarea>
       </mat-form-field>
 
-      <button type="submit" mat-stroked-button class="button-submit">Submit</button>
+      <button type="submit" mat-stroked-button class="button-submit" [disabled]="contactForm.status == 'INVALID'">Submit</button>
     </form>
   </div>
 </div>
