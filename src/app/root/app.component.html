@@ -1,5 +1,5 @@
 <mat-drawer-container autosize [class.dark-theme]="!isLight">
-  <mat-drawer #drawer mode="side">
+  <mat-drawer #drawer mode="side" *ngIf="!shouldHideMenu">
     <!-- TODO: mat-drawer内のコンポーネント化 -->
     <div id="container-user" fxLayout="row">
       <div fxFlex="40" id="color" fxLayoutAlign="center center">

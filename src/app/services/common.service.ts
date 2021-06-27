@@ -7,7 +7,9 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class CommonService {
   isLightObserver$;
+  shouldHideMenuObserver$;
   private isLightSubject = new BehaviorSubject<boolean>(true);
+  private shouldHideMenuSubject = new BehaviorSubject<boolean>(false);
   private drawer: MatDrawer | undefined;
   // TODO: CommonServiceから剥がす
   private informationBox: ToolBox = {
@@ -48,10 +50,18 @@ export class CommonService {
 
   constructor() {
     this.isLightObserver$ = this.isLightSubject.asObservable();
+    this.shouldHideMenuObserver$ = this.shouldHideMenuSubject.asObservable();
   }
 
   updateTheme() {
     this.isLightSubject.next(!this.isLightSubject.value);
+  }
+
+  showMenu() {
+    this.shouldHideMenuSubject.next(false);
+  }
+  hideMenu() {
+    this.shouldHideMenuSubject.next(true);
   }
 
   setDrawer(drawer: MatDrawer) {
