@@ -27,6 +27,9 @@ $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 
 html, body { height: 100%; }
 body { margin: 0; }
+.mat-drawer-container {
+  background-color: #f1efe4;
+}
 
 /* ink bar style */
 .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {

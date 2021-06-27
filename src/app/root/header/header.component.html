@@ -1,4 +1,4 @@
-<mat-toolbar id="app-header" class="dark-theme">
+<mat-toolbar id="app-header">
     <button mat-icon-button (click)="onClickMenuButton()" *ngIf="!shouldHideMenu">
         <mat-icon *ngIf="!isDrawerOpened; else showCloseIcon">menu</mat-icon>
         <ng-template #showCloseIcon>
@@ -8,7 +8,8 @@
     <a href="/">
         <img src="assets/images/title-logo.png" class="image-title" *ngIf="isLight; else showDarkModeLogo">
         <ng-template #showDarkModeLogo>
-            <img src="assets/images/title-logo-white.png" class="image-title">
+            <!-- <img src="assets/images/title-logo-white.png" class="image-title"> -->
+            <img src="assets/images/title-logo.png" class="image-title">
         </ng-template>
     </a>
     <span id="spacer"></span>
