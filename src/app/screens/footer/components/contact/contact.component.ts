@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonService } from 'src/app/services/common.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+/* eslint @typescript-eslint/naming-convention: 1 */
+declare let Email: any;
 
 @Component({
   selector: 'app-contact',
@@ -31,6 +33,16 @@ export class ContactComponent implements OnInit, OnDestroy {
     const name = contactForm.name;
     const email = contactForm.email;
     const title = contactForm.title;
-    const message = contactForm.message;
+    const bodyMessage = contactForm.message;
+
+    Email.send({
+      Host: 'smtp.elasticemail.com',
+      Username: 'nmurata73@gmail.com',
+      Password: 'D591061BFDF4F4F358DCFE398F6C3AFA1995',
+      To: 'nmurata73@gmail.com',
+      From: email,
+      Subject: title,
+      Body: bodyMessage,
+    }).then((message: any) => alert(bodyMessage));
   }
 }
