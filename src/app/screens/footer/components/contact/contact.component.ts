@@ -26,6 +26,11 @@ export class ContactComponent implements OnInit, OnDestroy {
   }
 
   onSubmitButtonTapped() {
-    alert(JSON.stringify(this.contactForm.value));
+    const contactFormJson = JSON.stringify(this.contactForm.value);
+    const contactForm = JSON.parse(contactFormJson);
+    const name = contactForm.name;
+    const email = contactForm.email;
+    const title = contactForm.title;
+    const message = contactForm.message;
   }
 }
