@@ -40,9 +40,9 @@ export class ContactComponent implements OnInit, OnDestroy {
       Username: 'nmurata73@gmail.com',
       Password: 'D591061BFDF4F4F358DCFE398F6C3AFA1995',
       To: 'nmurata73@gmail.com',
-      From: email,
-      Subject: title,
+      From: 'nmurata73@gmail.com',
+      Subject: `[name: ${email}] title`,
       Body: bodyMessage,
-    }).then((message: any) => alert(bodyMessage));
+    }).then((message: any) => alert(message));
   }
 }
