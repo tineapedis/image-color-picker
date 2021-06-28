@@ -1,4 +1,5 @@
 $main-font-family: 'Karla', sans-serif;
+$handwritten-font-family: 'Caveat', cursive;
 .font-main {
   font-family: $main-font-family;
 }
@@ -39,4 +40,16 @@ $main-font-family: 'Karla', sans-serif;
 .font-small-size-bold {
   @extend .font-small-size;
   font-weight: bold;
+}
+
+
+
+// 手書き
+.hw-font-36 {
+  font-size: 36px;
+  font-family: $handwritten-font-family;
+}
+.hw-font-30 {
+  font-size: 30px;
+  font-family: $handwritten-font-family;
 }
