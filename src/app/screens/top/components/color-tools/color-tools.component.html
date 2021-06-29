@@ -1,5 +1,5 @@
 <div *ngFor="let toolBox of toolBoxes" id="container-tools">
-  <p class="font-medium-size-bold">{{toolBox.name}}</p>
+  <p class="font-title">{{toolBox.name}}</p>
   <div fxLayout="row wrap" fxLayoutAlign="space-around">
     <mat-card class="card-tool" *ngFor="let tool of toolBox.tools" (click)="navigateTo(tool.url)">
       <div fxLayout="column" class="fit-parent">

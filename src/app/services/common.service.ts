@@ -13,7 +13,7 @@ export class CommonService {
   private drawer: MatDrawer | undefined;
   // TODO: CommonServiceから剥がす
   private informationBox: ToolBox = {
-    name: 'Color Information',
+    name: 'Information',
     tools: [
       {
         name: 'Simple',

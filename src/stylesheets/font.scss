@@ -1,5 +1,6 @@
 $main-font-family: 'Karla', sans-serif;
 $handwritten-font-family: 'Caveat', cursive;
+$title-font-family: 'Source Sans Pro', sans-serif;
 .font-main {
   font-family: $main-font-family;
 }
@@ -52,4 +53,11 @@ $handwritten-font-family: 'Caveat', cursive;
 .hw-font-30 {
   font-size: 30px;
   font-family: $handwritten-font-family;
+}
+
+
+.font-title {
+  font-family: $title-font-family;
+  color: #343434;
+  font-size: 28px;
 }
