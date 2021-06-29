@@ -34,6 +34,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('../screens/footer/footer.module').then((m) => m.FooterModule),
   },
+  {
+    path: 'chart',
+    loadChildren: () =>
+      import('../screens/chart/chart.module').then((m) => m.ChartModule),
+  },
 ];
 
 @NgModule({
