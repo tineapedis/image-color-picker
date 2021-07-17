@@ -227,4 +227,44 @@ export class ColorService implements Color {
       blue: rgbArray[2],
     };
   }
+
+  convertRgbToHsl(): HSL {
+    const red = this.rgb.red;
+    const green = this.rgb.green;
+    const blue = this.rgb.blue;
+
+    const max = Math.max(red, green, blue);
+    const min = Math.min(red, green, blue);
+    const hsl = { hex: 0, saturation: 0, lightness: (max + min) / 2 };
+
+    if (max !== min) {
+      // H(色相)
+      if (max === red) {
+        hsl.hex = (60 * (green - blue)) / (max - min);
+      }
+      if (max === green) {
+        hsl.hex = (60 * (blue - red)) / (max - min) + 120;
+      }
+      if (max === blue) {
+        hsl.hex = (60 * (red - green)) / (max - min) + 240;
+      }
+
+      // S(彩度)
+      if (hsl.lightness <= 127) {
+        hsl.saturation = (max - min) / (max + min);
+      } else {
+        hsl.saturation = (max - min) / (510 - max - min);
+      }
+    }
+
+    if (hsl.hex < 0) {
+      hsl.hex = hsl.hex + 360;
+    }
+
+    hsl.hex = Math.round(hsl.hex);
+    hsl.saturation = Math.round(hsl.saturation * 100);
+    hsl.lightness = Math.round((hsl.lightness / 255) * 100);
+
+    return hsl;
+  }
 }

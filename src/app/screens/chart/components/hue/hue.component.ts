@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ColorService } from 'src/app/services/color.service';
 
 @Component({
   selector: 'app-hue',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hue.component.scss'],
 })
 export class HueComponent implements OnInit {
+  colorService: ColorService;
+
   hexList = [
     '#F30100',
     '#F33E00',
@@ -15,7 +18,13 @@ export class HueComponent implements OnInit {
     '#B5F300',
     '#79F300',
   ];
-  constructor() {}
+
+  constructor(colorService: ColorService) {
+    this.colorService = colorService;
+
+    const hsl = colorService.convertRgbToHsl();
+    this.hexList.push(`hsl(${hsl.hex}, ${hsl.saturation}%, ${hsl.lightness}%)`);
+  }
 
   ngOnInit() {}
 }
