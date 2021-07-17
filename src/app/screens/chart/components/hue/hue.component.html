@@ -1,1 +1,3 @@
-<p>hue works!</p>
+<div *ngFor="let hex of hexList">
+  <div class="box-color" [style.background-color]="hex"></div>
+</div>

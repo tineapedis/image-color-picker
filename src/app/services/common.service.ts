@@ -48,7 +48,7 @@ export class CommonService {
   private chartToolBox = {
     name: 'Chart',
     tools: [
-      { name: 'Hue', caption: 'Hue Caption', url: '/' },
+      { name: 'Hue', caption: 'Hue Caption', url: '/chart/hue' },
       { name: 'Saturation', caption: 'Saturation Caption', url: '/' },
       { name: 'Brightness', caption: 'Brightness Caption', url: '/' },
     ],
