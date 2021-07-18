@@ -45,8 +45,16 @@ export class CommonService {
       },
     ],
   };
+  private chartToolBox = {
+    name: 'Chart',
+    tools: [
+      { name: 'Hue', caption: 'Hue Caption', url: '/chart/hue' },
+      { name: 'Saturation', caption: 'Saturation Caption', url: '/' },
+      { name: 'Brightness', caption: 'Brightness Caption', url: '/' },
+    ],
+  };
   // eslint-disable-next-line
-  toolBoxes = [this.informationBox, this.pickerToolBox];
+  toolBoxes = [this.informationBox, this.pickerToolBox, this.chartToolBox];
 
   constructor() {
     this.isLightObserver$ = this.isLightSubject.asObservable();

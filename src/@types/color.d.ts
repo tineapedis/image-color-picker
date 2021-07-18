@@ -24,6 +24,12 @@ type CMYK = {
   keyPlate: number;
 };
 
+type HSL = {
+  hue: number;
+  saturation: number;
+  lightness: number;
+};
+
 type ColorCode = {
   rgb: string;
   hex: string;
