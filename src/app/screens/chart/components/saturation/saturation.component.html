@@ -1,1 +1,28 @@
-<p>saturation works!</p>
+<div fxLayout="row wrap" fxLayoutAlign="space-around">
+
+  <div fxLayout="row wrap" fxLayoutAlign="space-around">
+    <div fxLayoutAlign="center center" class="box-color" [style.background-color]="colorService.hexColorCode()">
+      <div fxLayoutAlign="center center" class="box-text">
+        <h5>{{colorService.hexColorCode()}}</h5>
+      </div>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="space-evenly center">
+      <div>
+        <p>Hue: {{hsl.hue}}</p>
+        <p>Satuation: {{hsl.saturation}}</p>
+        <p>Lightness: {{hsl.lightness}}</p>
+      </div>
+      <button>test</button>
+    </div>
+  </div>
+
+  <div id="container-satuation-list" fxLayout="row wrap" fxLayoutAlign="space-around">
+    <div *ngFor="let hex of hexList">
+      <div fxLayoutAlign="center center" class="box-color" [style.background-color]="hex">
+        <div fxLayoutAlign="center center" class="box-text">
+          <h5>{{hex}}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
