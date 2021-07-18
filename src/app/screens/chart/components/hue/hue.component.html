@@ -1,3 +1,7 @@
-<div *ngFor="let hex of hexList">
-  <div class="box-color" [style.background-color]="hex"></div>
+<div fxLayout="row wrap" fxLayoutAlign="space-around">  
+  <div *ngFor="let hex of hexList">
+    <div fxLayoutAlign="center center" class="box-color" [style.background-color]="hex">
+      <div fxLayoutAlign="center center" class="box-text"><h5>{{hex}}</h5></div>
+    </div>
+  </div>
 </div>

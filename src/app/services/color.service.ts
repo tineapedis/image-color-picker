@@ -235,18 +235,18 @@ export class ColorService implements Color {
 
     const max = Math.max(red, green, blue);
     const min = Math.min(red, green, blue);
-    const hsl = { hex: 0, saturation: 0, lightness: (max + min) / 2 };
+    const hsl = { hue: 0, saturation: 0, lightness: (max + min) / 2 };
 
     if (max !== min) {
       // H(色相)
       if (max === red) {
-        hsl.hex = (60 * (green - blue)) / (max - min);
+        hsl.hue = (60 * (green - blue)) / (max - min);
       }
       if (max === green) {
-        hsl.hex = (60 * (blue - red)) / (max - min) + 120;
+        hsl.hue = (60 * (blue - red)) / (max - min) + 120;
       }
       if (max === blue) {
-        hsl.hex = (60 * (red - green)) / (max - min) + 240;
+        hsl.hue = (60 * (red - green)) / (max - min) + 240;
       }
 
       // S(彩度)
@@ -257,14 +257,77 @@ export class ColorService implements Color {
       }
     }
 
-    if (hsl.hex < 0) {
-      hsl.hex = hsl.hex + 360;
+    if (hsl.hue < 0) {
+      hsl.hue = hsl.hue + 360;
     }
 
-    hsl.hex = Math.round(hsl.hex);
+    hsl.hue = Math.round(hsl.hue);
     hsl.saturation = Math.round(hsl.saturation * 100);
     hsl.lightness = Math.round((hsl.lightness / 255) * 100);
 
     return hsl;
+  }
+
+  convertHslToRgb(hsl: HSL): RGB {
+    let hue = hsl.hue;
+    let saturation = hsl.saturation;
+    let lightness = hsl.lightness;
+
+    const RGB_MAX = 255;
+    const HUE_MAX = 360;
+    const SATURATION_MAX = 100;
+    const LIGHTNESS_MAX = 100;
+
+    let r;
+    let g;
+    let b;
+    let max;
+    let min;
+
+    hue = hue % HUE_MAX;
+    saturation = saturation / SATURATION_MAX;
+    lightness = lightness / LIGHTNESS_MAX;
+
+    if (lightness < 0.5) {
+      max = lightness + lightness * saturation;
+      min = lightness - lightness * saturation;
+    } else {
+      max = lightness + (1 - lightness) * saturation;
+      min = lightness - (1 - lightness) * saturation;
+    }
+
+    const hp = HUE_MAX / 6;
+    const q = hue / hp;
+    if (q <= 1) {
+      r = max;
+      g = (hue / hp) * (max - min) + min;
+      b = min;
+    } else if (q <= 2) {
+      r = ((hp * 2 - hue) / hp) * (max - min) + min;
+      g = max;
+      b = min;
+    } else if (q <= 3) {
+      r = min;
+      g = max;
+      b = ((hue - hp * 2) / hp) * (max - min) + min;
+    } else if (q <= 4) {
+      r = min;
+      g = ((hp * 4 - hue) / hp) * (max - min) + min;
+      b = max;
+    } else if (q <= 5) {
+      r = ((hue - hp * 4) / hp) * (max - min) + min;
+      g = min;
+      b = max;
+    } else {
+      r = max;
+      g = min;
+      b = ((HUE_MAX - hue) / hp) * (max - min) + min;
+    }
+
+    return {
+      red: Math.floor(r * RGB_MAX),
+      green: Math.floor(g * RGB_MAX),
+      blue: Math.floor(b * RGB_MAX),
+    };
   }
 }

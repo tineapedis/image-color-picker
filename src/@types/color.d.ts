@@ -25,7 +25,7 @@ type CMYK = {
 };
 
 type HSL = {
-  hex: number;
+  hue: number;
   saturation: number;
   lightness: number;
 };
