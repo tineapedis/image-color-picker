@@ -12,7 +12,14 @@
         <p>Satuation: {{hsl.saturation}}</p>
         <p>Lightness: {{hsl.lightness}}</p>
       </div>
-      <button>test</button>
+      <mat-form-field appearance="fill">
+        <mat-label>Select number</mat-label>
+        <mat-select [(value)]="selected" (selectionChange)="onSelectNumber()">
+          <mat-option *ngFor="let number of chartNumbers" [value]="number.value">
+            {{number.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
   </div>
 
