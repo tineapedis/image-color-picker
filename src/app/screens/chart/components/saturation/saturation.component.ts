@@ -6,6 +6,12 @@ interface ChartNumber {
   viewValue: string;
 }
 
+interface Chart {
+  hex: string;
+  rgb: string;
+  value: string;
+}
+
 @Component({
   selector: 'app-saturation',
   templateUrl: './saturation.component.html',
@@ -13,7 +19,7 @@ interface ChartNumber {
 })
 export class SaturationComponent implements OnInit {
   colorService: ColorService;
-  hexList: string[] = [];
+  chartList: Chart[] = [];
   selectedNumber = '12';
   chartNumbers: ChartNumber[] = [
     { value: '8', viewValue: '8' },
@@ -35,7 +41,7 @@ export class SaturationComponent implements OnInit {
   ngOnInit(): void {}
 
   onSelectNumber() {
-    this.hexList = [];
+    this.chartList = [];
     this.updateHexList();
   }
 
@@ -48,7 +54,11 @@ export class SaturationComponent implements OnInit {
         saturation,
         lightness: this.hsl.lightness,
       });
-      this.hexList.push(this.colorService.convertRgbToHex(rgb));
+      this.chartList.push({
+        hex: this.colorService.convertRgbToHex(rgb),
+        rgb: `${rgb.red}, ${rgb.green}, ${rgb.blue}`,
+        value: saturation.toString(),
+      });
     }
   }
 }
