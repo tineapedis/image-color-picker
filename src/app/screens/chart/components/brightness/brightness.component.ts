@@ -48,16 +48,16 @@ export class BrightnessComponent implements OnInit {
   updateChartList() {
     const MAX = Number(this.selectedNumber);
     for (let i = 0; i < MAX; i++) {
-      const saturation = i * (100 / MAX);
+      const lightness = i * (100 / MAX);
       const rgb = this.colorService.convertHslToRgb({
         hue: this.hsl.hue,
-        saturation,
-        lightness: this.hsl.lightness,
+        saturation: this.hsl.saturation,
+        lightness,
       });
       this.chartList.push({
         hex: this.colorService.convertRgbToHex(rgb),
         rgb: `${rgb.red}, ${rgb.green}, ${rgb.blue}`,
-        value: saturation.toString(),
+        value: lightness.toString(),
       });
     }
   }
