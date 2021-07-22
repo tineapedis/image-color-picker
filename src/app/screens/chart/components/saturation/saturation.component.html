@@ -6,15 +6,15 @@
         <h5>{{colorService.hexColorCode()}}</h5>
       </div>
     </div>
-    <div fxLayout="column" fxLayoutAlign="space-evenly center">
-      <div>
+    <div fxLayout="column" fxLayoutAlign="space-evenly start">
+      <div class="box-hsl-text" fxLayout="column" fxLayoutAlign="center start" >
         <p>Hue: {{hsl.hue}}</p>
         <p>Satuation: {{hsl.saturation}}</p>
         <p>Lightness: {{hsl.lightness}}</p>
       </div>
       <mat-form-field appearance="fill">
         <mat-label>Select number</mat-label>
-        <mat-select [(value)]="selected" (selectionChange)="onSelectNumber()">
+        <mat-select [(value)]="selectedNumber" (selectionChange)="onSelectNumber()">
           <mat-option *ngFor="let number of chartNumbers" [value]="number.value">
             {{number.viewValue}}
           </mat-option>

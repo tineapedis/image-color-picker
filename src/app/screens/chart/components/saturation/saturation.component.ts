@@ -14,8 +14,7 @@ interface ChartNumber {
 export class SaturationComponent implements OnInit {
   colorService: ColorService;
   hexList: string[] = [];
-
-  selected = '12';
+  selectedNumber = '12';
   chartNumbers: ChartNumber[] = [
     { value: '8', viewValue: '8' },
     { value: '12', viewValue: '12' },
@@ -36,12 +35,12 @@ export class SaturationComponent implements OnInit {
   ngOnInit(): void {}
 
   onSelectNumber() {
+    this.hexList = [];
     this.updateHexList();
   }
 
   updateHexList() {
-    this.hexList = [];
-    const MAX = Number(this.selected);
+    const MAX = Number(this.selectedNumber);
     for (let i = 0; i < MAX; i++) {
       const saturation = i * (100 / MAX);
       const rgb = this.colorService.convertHslToRgb({
