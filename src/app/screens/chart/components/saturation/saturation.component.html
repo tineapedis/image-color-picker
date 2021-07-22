@@ -1,0 +1,45 @@
+<div fxLayout="row wrap" fxLayoutAlign="space-around">
+
+  <div fxLayout="row wrap" fxLayoutAlign="space-around">
+    <div fxLayoutAlign="center center" class="box-color" [style.background-color]="colorService.hexColorCode()">
+      <div fxLayout="column" fxLayoutAlign="center center">
+        <button mat-flat-button class="button-chart">
+          <h5>HEX: {{colorService.hexColorCode()}}</h5>
+        </button>
+        <button mat-flat-button class="button-chart">
+          <h5>RGB: {{colorService.rgbColorCode()}}</h5>
+        </button>
+      </div>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="space-evenly start">
+      <div class="box-hsl-text" fxLayout="column" fxLayoutAlign="center start">
+        <p>Hue: {{hsl.hue}}</p>
+        <p>Satuation: {{hsl.saturation}}</p>
+        <p>Lightness: {{hsl.lightness}}</p>
+      </div>
+      <mat-form-field appearance="fill">
+        <mat-label>Select number</mat-label>
+        <mat-select [(value)]="selectedNumber" (selectionChange)="onSelectNumber()">
+          <mat-option *ngFor="let number of chartNumbers" [value]="number.value">
+            {{number.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div id="container-satuation-list" fxLayout="row wrap" fxLayoutAlign="space-around">
+    <div *ngFor="let chart of chartList">
+      <div fxLayoutAlign="center center" class="box-color" [style.background-color]="chart.hex">
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <button mat-flat-button class="button-chart">
+            <h5>{{chart.hex}}</h5>
+          </button>
+          <button mat-flat-button class="button-chart">
+            <h5>{{chart.rgb}}</h5>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -8,7 +8,6 @@ import { ColorService } from 'src/app/services/color.service';
 })
 export class HueComponent implements OnInit {
   colorService: ColorService;
-
   hexList: string[] = [];
 
   constructor(colorService: ColorService) {

@@ -49,7 +49,11 @@ export class CommonService {
     name: 'Chart',
     tools: [
       { name: 'Hue', caption: 'Hue Caption', url: '/chart/hue' },
-      { name: 'Saturation', caption: 'Saturation Caption', url: '/' },
+      {
+        name: 'Saturation',
+        caption: 'Saturation Caption',
+        url: '/chart/saturation',
+      },
       { name: 'Brightness', caption: 'Brightness Caption', url: '/' },
     ],
   };

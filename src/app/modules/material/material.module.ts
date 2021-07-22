@@ -12,6 +12,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [],
@@ -29,6 +30,7 @@ import { MatSliderModule } from '@angular/material/slider';
     MatSidenavModule,
     MatListModule,
     MatSliderModule,
+    MatSelectModule,
   ],
 })
 export class MaterialModule {}
