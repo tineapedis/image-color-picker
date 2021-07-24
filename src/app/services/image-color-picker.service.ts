@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 export class ImageColorPickerService {
   imageSrcObserver$;
   private imageSrcSubject = new BehaviorSubject<string>(
-    '/assets/images/techi.jpeg'
+    '/assets/images/yamada.jpg'
   );
 
   constructor() {
