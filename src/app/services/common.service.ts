@@ -54,7 +54,11 @@ export class CommonService {
         caption: 'Saturation Caption',
         url: '/chart/saturation',
       },
-      { name: 'Brightness', caption: 'Brightness Caption', url: '/' },
+      {
+        name: 'Brightness',
+        caption: 'Brightness Caption',
+        url: '/chart/brightness',
+      },
     ],
   };
   // eslint-disable-next-line

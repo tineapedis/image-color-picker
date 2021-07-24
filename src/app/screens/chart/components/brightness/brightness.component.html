@@ -32,10 +32,10 @@
     <div *ngFor="let chart of chartList">
       <div fxLayoutAlign="center center" class="box-color" [style.background-color]="chart.hex">
         <div fxLayout="column" fxLayoutAlign="center center">
-          <button mat-flat-button class="button-chart">
+          <button mat-flat-button class="button-chart" (click)="onClickColorCodeButton(chart.hex)">
             <h5>{{chart.hex}}</h5>
           </button>
-          <button mat-flat-button class="button-chart">
+          <button mat-flat-button class="button-chart" (click)="onClickColorCodeButton(chart.rgb)">
             <h5>{{chart.rgb}}</h5>
           </button>
         </div>
